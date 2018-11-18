@@ -4,13 +4,25 @@
 
 ### 1.3 Why we need to write parallel programs
 
-*"An efficient parallel implementation of a serial program may not be obtained by
-finding efficient parallelizations of each of its steps. Rather, the best parallelization may be obtained by stepping back and devising an entirely new algorithm."* - Peter Pacheco
+An efficient parallel implementation of a serial program might not be obtained by finding efficient parallelizations of each of its steps. Rather, the best parallelization might be obtained by stepping back and devising an entirely new algorithm.
 
 ## 2.1 Some Background
 
 ### 2.1.1 The von Neumann architecture
-*"The separation of memory and CPU is often called the **von Neumann bottleneck**, since the interconnect determines the rate at which instructions and data can be accessed."* - Peter Pacheco
+The separation of memory and CPU is often called the **von Neumann bottleneck**, since the interconnect determines the rate at which instructions and data can be accessed.
+
+## 2.2 Modifications to the von Neumann Model
+
+### 2.2.1 The basics of caching
+
+**Cache**\
+In general a cache is a collection of memory locations that can be accessed in less time than some other memory locations.
+
+The **CPU cache** is a collection of memory locations that the CPU can access more quickly than it can access main memory.
+
+**Cache eviction**\
+When more than one line in memory can be mapped to several different locations
+in a cache, we need to be able to decide which line in the cache should be replaced. The most commonly used scheme is called **least recently used**. The cache has a record of the relative order in which the blocks have been used, and the least recently used line is evicted and replaced by a new line from memory.
 
 ## 2.6 Performance
 

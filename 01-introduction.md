@@ -11,3 +11,15 @@ finding efficient parallelizations of each of its steps. Rather, the best parall
 
 ### The von Neumann architecture
 *"The separation of memory and CPU is often called the **von Neumann bottleneck**, since the interconnect determines the rate at which instructions and data can be accessed."* - Peter Pacheco
+
+## 2.6 Performance
+
+### 2.6.1 Speedup and efficiency
+The best we can hope to do is to equally divide the work among the cores,
+without introducing additional work for the cores.
+
+If we accomplish this and run the program with p cores, with one thread or process on each core, the parallel program will run p times faster than the serial program.
+
+If we call the serial run-time T<sub>serial</sub> and our parallel run-time T<sub>parallel</sub>, then the best we can
+hope for is T<sub>parallel</sub> = T<sub>serial</sub>/p. When this happens, we say that our parallel program
+has **linear speedup**.

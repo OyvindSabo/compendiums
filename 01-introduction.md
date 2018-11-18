@@ -22,3 +22,5 @@ If we accomplish this and run the program with p cores, with one thread or proce
 
 If we call the serial run-time **T<sub>serial</sub>** and our parallel run-time **T<sub>parallel</sub>**, then the best we can hope for is **T<sub>parallel</sub> = T<sub>serial</sub>/p**. When this happens, we say that our parallel program
 has **linear speedup**.
+
+In general, dividing the work of a serial program among the processes/threads introduces a “parallel overhead” such as mutual exclusion or communication. If **T<sub>overhead</sub>** denotes this parallel overhead, it’s often the case that **T<sub>parallel</sub> = T<sub>serial</sub>/p + T<sub>overhead</sub>**.

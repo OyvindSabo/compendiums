@@ -28,6 +28,8 @@ has **linear speedup**.
 **Superlinear speedup**\
 A parallel program that obtains a speedup greater than **p** (the number of processes or threads) is said to have superlinear speedup.
 
+For instance, when computing a problem on a distributed-memory system, both the number of processors and the size of accumulated caches from different processors increases. With the larger accumulated cache size, more or even all of the working set can fit into caches and the memory access time can decrease dramatically, which causes extra speedup in addition to that from the actual computation.
+
 For instance, a program that must use secondary storage for its data when it’s run on a single processor system might be able to fit all of its data into main memory when run on a large distributed-memory system.
 
 Theoretical spuperlinear speedup is a contradiction because speedup, by definition is computed with respect to the best sequential algorithm.

@@ -18,11 +18,49 @@ The separation of memory and CPU is often called the **von Neumann bottleneck**,
 **Cache**\
 In general a cache is a collection of memory locations that can be accessed in less time than some other memory locations.
 
-The **CPU cache** is a collection of memory locations that the CPU can access more quickly than it can access main memory.
+**CPU cache**\
+A collection of memory locations that the CPU can access more quickly than it can access main memory.
 
 **Cache eviction**\
 When more than one line in memory can be mapped to several different locations
 in a cache, we need to be able to decide which line in the cache should be replaced. The most commonly used scheme is called **least recently used**. The cache has a record of the relative order in which the blocks have been used, and the least recently used line is evicted and replaced by a new line from memory.
+
+## 2.3 Parallel hardware
+
+### Flynn's taxonomy
+
+|                       | Single Instruction | Multi Instructioons | Single Program |
+|-----------------------|--------------------|---------------------|----------------|
+| Single Data Stream    | SISD               | MISD                |                |
+| Multiple Data Streams | SIMD (SIMT)        | MIMD                | SPMD           |
+
+**SISD**\
+Single Instruction Single Data: your average “dumb” single-core processors. They process instructions serially, and each instruction is executed on one piece of data.
+
+Good examples are microcontrollers, which tend to be single core machines.
+
+**SIMD**\
+SIMD instructions are classically called “**vector processors**”. The idea is that arithmetic operations tend to be executed many times on different pieces of data. Instead of creating separate CPU cores, you share control logic such as the instruction decoder, and execute the instruction on multiple pieces of data simultaneously.
+
+Nowadays, you will find this style of instruction integrated into modern processors. On x86, you will find these instructions in the SSE, MMX, and AVX extensions.
+
+SIMD processors execute their instructions in lockstep. This means that each instruction performs multiple additions/multiplications/whatnot, they MUST all be executed at once (or wait until all can be executed).
+
+**SIMT**\
+A variation of SIMD machines is the Single Instruction Multiple Thread category. This was not present in the taxonomy Flynn proposed, but has implicitly been added.
+
+SIMT is intended to limit instruction fetching overhead, i.e. the latency that comes with memory access, and is used in modern GPUs
+
+Note that SIMD and SIMT are nearly equivalent. The only difference is that in SIMT, each processed value belongs to a separate thread.
+
+**MISD**\
+MISD is a very rare processor type. One of the main places you will find it “in the wild” is in systems that HAVE to be reliable, such as satellites. It’s pretty hard to fly out in space to service one, so once it’s up there, it HAS to keep working. They often have multiple processors executing the same instructions, where the results are compared to make sure no fault has occurred, which can happen due to factors such as interstellar radiation.
+
+**MIMD**\
+CPUs have multiple cores nowadays. Each core can execute instructions independently, and cores can work on different pieces of data.
+
+**SPMD**\
+Single Program Multiple Data is essentially MPI (Message Passing Interface); you run the same program on multiple physical machines, usually in the context of a supercomputer. These individual instances in turn execute the Same Program on Different pieces of Data.
 
 ## 2.6 Performance
 

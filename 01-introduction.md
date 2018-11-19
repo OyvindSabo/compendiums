@@ -46,6 +46,11 @@ Message-passing architecture takes a long time to communicate data among process
 
 ## 2.3 Parallel hardware
 
+### 2.3.4 Cache coherence
+
+**Snooping cache coherence**\
+The idea behind snooping comes from bus-based systems: When the cores share a bus, any signal transmitted on the bus can be “seen” by all the cores connected to the bus. Thus, when core 0 updates the copy of x stored in its cache, if it also broadcasts this information across the bus, and if core 1 is “snooping” the bus, it will see that x has been updated and it can mark its copy of x as invalid. This is more or less how snooping cache coherence works. The principal difference between our description and the actual snooping protocol is that the broadcast only informs the other cores that the cache line containing x has been updated, not that x has been updated.
+
 ### Flynn's taxonomy
 
 |                       | Single Instruction | Multi Instructioons | Single Program |
@@ -80,6 +85,13 @@ CPUs have multiple cores nowadays. Each core can execute instructions independen
 
 **SPMD**\
 Single Program Multiple Data is essentially MPI (Message Passing Interface); you run the same program on multiple physical machines, usually in the context of a supercomputer. These individual instances in turn execute the Same Program on Different pieces of Data.
+
+## 2.4 Parallel software
+
+### 2.4.4 Distributed-memory
+
+**One-sided commuication**\
+One-sided communication is also called remote memory access. A single process calls a function, which updates either local memory with a value from another process or remote memory with a value from the calling process. This can simplify communication, since it only requires the active participation of a single process.
 
 ## 2.6 Performance
 

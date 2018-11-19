@@ -25,6 +25,25 @@ A collection of memory locations that the CPU can access more quickly than it ca
 When more than one line in memory can be mapped to several different locations
 in a cache, we need to be able to decide which line in the cache should be replaced. The most commonly used scheme is called **least recently used**. The cache has a record of the relative order in which the blocks have been used, and the least recently used line is evicted and replaced by a new line from memory.
 
+### 2.2.6 Hardware multithreading
+
+**Granularity**\
+G = <sup>T<sub>computation</sub></sup> &frasl;<sub>T<sub>communication</sub></sub>
+
+**Fine-grained parallelism**\
+A program is broken down to a large number of small tasks. These tasks are assigned individually to many processors. The amount of work associated with each parallel task is low and the work is evenly distributed among the processors. Hence, fine-grained parallelism facilitates load balancing.
+
+As each task processes less data, the number of processors required to perform the complete processing is high. This in turn, increases the communication and synchronization overhead.
+
+Fine-grained parallelism is best exploited in architectures which support fast communication. Shared memory architecture which has a low communication overhead is most suitable for fine-grained parallelism.
+
+It is difficult for programmers to detect parallelism in a program, therefore, it is usually the compilers' responsibility to detect fine-grained parallelism.
+
+**Coarse-grained parallelism**\
+In coarse-grained parallelism, a program is split into large tasks. Due to this, a large amount of computation takes place in processors. This might result in load imbalance, wherein certain tasks process the bulk of the data while others might be idle. Further, coarse-grained parallelism fails to exploit the parallelism in the program as most of the computation is performed sequentially on a processor. The advantage of this type of parallelism is low communication and synchronization overhead.
+
+Message-passing architecture takes a long time to communicate data among processes which makes it suitable for coarse-grained parallelism
+
 ## 2.3 Parallel hardware
 
 ### Flynn's taxonomy
@@ -99,3 +118,17 @@ If a fraction **r** of our serial program remains unparallelized, then Amdahl’
 **Gustafson's law**\
 Amdahl's law applies only to cases where the problem size is fixed. Gustafson argues that as more computing resources become available, they tend to get used on larger datasets, and the time spent in the parallelizable part often grows much faster than the time spent in parts which have to be executed in serial. This means that as the number of processes increase, the speedup achieved by parallelization might actually exceed the maximum speedup calculated by Amdahls law, since the increased data size means that the fraction of the program which has to be executed in serial has decreased for this larger data set. Therefore, Gustafson's law gives a less pessimistic and more realistic assessment of the parallel performance.\
 **S<sub>latency</sub>(s) = (1 - p) + N p**
+
+### 2.6.3 Scalability
+
+**Scalable programs**\
+Formally, a parallel program is scalable if there is a rate at which the problem size can be increased so that as the number of processes/threads is increased, the efficiency remains constant
+
+**Strongly scalable programs**\
+A program is strongly scalable, if the problem size can remain fixed.
+
+**Weakly scalable programs**\
+A program is weakly scalable if the problem size needs to be increased at the same rate as the number of processes/threads.
+
+**Note**\
+Amdahl’s Law assumed a strict scaling setup (constant problem size in decreasing time) and Gustafson’s Law assumes a weak scaling setup (increasing problem size in fixed time).

@@ -67,9 +67,12 @@ Hello from process 3 out of 4
 A communicator, a collection of processes that you want
 to group together.
 
-**MPI_Init**
+**MPI_Init**\
 When you call MPI_Init, it sets up a process called MPI_COMM_WORLD that
 contains all of your processes
+
+**MPI_Finalize**
+Terminates the MPI execution environment. You should call this when you don't need the MPI anymore.
 
 **MPI_COMM_WORLD**\
 Collection of all your processes
@@ -115,3 +118,22 @@ MPI_Recv (
 
 **MPI_Bcast**\
 Makes sure that every rank gets a copy of some data from a root rank.
+
+**MPI_Bcast prototype**
+```C
+int MPI_Bcast(
+    void *buffer,
+    int count,
+    MPI_Datatype datatype,
+    int root,
+    MPI_Comm comm
+);
+```
+
+## Gathering
+
+**MPI_Gather**\
+Collects data from all ranks and gives it to the root rank.
+
+**MPI_Allgather**\
+Just like MPI_Gather, except that every rank ends up with all the collected data.

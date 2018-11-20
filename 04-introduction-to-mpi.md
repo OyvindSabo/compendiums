@@ -60,3 +60,58 @@ Hello from process 2 out of 4
 Hello from process 1 out of 4
 Hello from process 3 out of 4
 ```
+
+## Communicators
+
+**MPI_Comm**\
+A communicator, a collection of processes that you want
+to group together.
+
+**MPI_Init**
+When you call MPI_Init, it sets up a process called MPI_COMM_WORLD that
+contains all of your processes
+
+**MPI_COMM_WORLD**\
+Collection of all your processes
+
+**MPI_Comm_rank**
+
+## Sending and receiving
+
+**MPI_Send prototype:**
+```C
+MPI_Send (
+    void *buffer,
+    int elements,
+    MPI_Type type,
+    int destination,
+    int tag,
+    MPI_Comm communicator
+);
+```
+**MPI_Recv prototype:**
+```C
+MPI_Recv (
+    void *buffer,
+    int elements,
+    MPI_Type type,
+    int source,
+    int tag,
+    MPI_Comm communicator,
+    MPI_Status status
+);
+
+```
+**What do the arguments mean?**
+- **buffer** points to the transmitted data on the sending side. On the receiving side it points to a block of free memory where it will fit. If the sending side wants to transmit a variable called `myVariable`, **buffer** should be passed in as `&myVariable`. If the receiving side wants to store the received value in a variable called `yourVariable`, **buffer** should be set to `&yourVariable`
+- **elements**: THe number of elements to be sent
+- **type**: the MPI_Type can be MPI_INT, MPI_DOUBLE, MPI_BYTE, ...
+- **destination**: The rank of the receiving process.
+- **source**: The rank of the sending process from which a message is expected.
+- **tag**: Just a random number you make up. It has to be the same at sender and receiver. It’s used for matching up the right pairs when you have several send/receive pairs at the same time.
+- **communicator**: Collection of processes, for instance MPI_COMM_WORLD
+
+## Broadcasting
+
+**MPI_Bcast**\
+Makes sure that every rank gets a copy of some data from a root rank.

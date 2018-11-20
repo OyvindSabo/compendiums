@@ -137,3 +137,25 @@ Collects data from all ranks and gives it to the root rank.
 
 **MPI_Allgather**\
 Just like MPI_Gather, except that every rank ends up with all the collected data.
+
+## Reduction
+
+**MPI_Reduce**\
+MPI_Reduce takes an array of input elements on each process and returns an array of output elements to the root process. The output elements contain the reduced result.
+**MPI_Reduce prototype:**
+```C
+MPI_Reduce(
+    void* send_data,
+    void* recv_data,
+    int count,
+    MPI_Datatype datatype,
+    MPI_Op op,
+    int root,
+    MPI_Comm communicator
+)
+```
+It might be tempting to call MPI Reduce using the same buffer for both input and output. For example, if we wanted to form the global sum of x on each process and store the result in x on process 0, we might try calling\
+`MPI Reduce(&x, &x, 1, MPI DOUBLE, MPI SUM, 0, comm);`\
+However, this call is illegal in MPI, so its result will be unpredictable. This is
+because the MPI Forum wanted to make the Fortran and C versions of MPI as similar
+as possible, and Fortran prohibits aliasing. Two arguments are aliased if they refer to the same block of memory.

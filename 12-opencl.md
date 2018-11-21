@@ -21,3 +21,5 @@ The recommended OpenCL standard to use is 2.0 to 2.2, since it's bet
 | CUDA core                | Processing element |
 
 **CUDA** is less verbose than **OpenCL**, but **OpenCL** is offered on a wider selection of devices.
+
+Since **OpenCL** is platform agnostic, there’s no warplevel instrinsics like CUDA has.

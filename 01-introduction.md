@@ -116,10 +116,14 @@ For instance, a program that must use secondary storage for its data when it’s
 Theoretical spuperlinear speedup is a contradiction because speedup, by definition is computed with respect to the best sequential algorithm.
 
 **Efficiency**\
-If S is the Speedup and P is the number of processes, the efficiency is given by **E = S/P**
+If S is the Speedup and P is the number of processes, the efficiency is given by\
+**E = <sup>S</sup>&frasl;<sub>P</sub>**
+In the case of speedup achieved by parallelization, this is equivalent to\
+**E = <sup>T<sub>Serial</sub></sup>&frasl;<sub>T**<sub>Parallel * P</sub></sub>
 
 **Parallel overhead**\
-In general, dividing the work of a serial program among the processes/threads introduces a “parallel overhead” such as mutual exclusion or communication. If **T<sub>overhead</sub>** denotes this parallel overhead, it’s often the case that **T<sub>parallel</sub> = T<sub>serial</sub>/p + T<sub>overhead</sub>**.
+In general, dividing the work of a serial program among the processes/threads introduces a “parallel overhead” such as mutual exclusion or communication. If **T<sub>overhead</sub>** denotes this parallel overhead, it’s often the case that\
+**T<sub>parallel</sub> = <sup>T<sub>serial</sub></sup>&frasl;<sub>p</sub> + T<sub>overhead</sub>**
 
 ### 2.6.2 Amdahl's law
 

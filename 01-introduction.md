@@ -88,6 +88,17 @@ Single Program Multiple Data is essentially MPI (Message Passing Interface); you
 
 ## 2.4 Parallel software
 
+### 2.4.3 Shared-memory
+
+**Mutexes**\
+The most commonly used mechanism for insuring mutual exclusion is a mutual exclusion lock or mutex or lock. A mutex is a special type of object that has support in the underlying hardware. The basic idea is that each critical section is protected by a lock. Before a thread can execute the code in the critical section, it must “obtain” the mutex by calling a mutex function, and, when it’s done executing the code in the critical section, it should “relinquish” the mutex by calling an unlock function. While one thread “owns” the lock—that is, has returned from a call to the lock function, but hasn’t yet called the unlock function—any other thread attempting to execute the code in the critical section will wait in its call to the lock function.
+
+**Busy-waiting**\
+There are alternatives to mutexes. In busy-waiting, a thread enters a loop whose sole purpose is to test a condition. This loop is called a “busy-wait” because the thread can be very busy waiting for the condition. This has the virtue that it’s simple to understand and implement. However, it can be very wasteful of system resources, because even when a thread is doing no useful work, the core running the thread will be repeatedly checking to see if the critical section can be entered.
+
+**Semaphores**\
+Semaphores are similar to mutexes, although the details of their behavior are slightly different, and there are some types of thread synchronization that are easier to implement with semaphores than mutexes.
+
 ### 2.4.4 Distributed-memory
 
 **One-sided commuication**\

@@ -35,3 +35,100 @@ int main() {
 }
 ```
 `g++ ompsample.cpp -o omp -fopenmp`
+
+**Parallelize a single line**
+```C
+#pragma omp parallel
+doSomething();
+```
+
+**Parallelize multiple lines**
+```C
+#pragma omp parallel
+{
+    doSomething();
+}
+```
+
+**Find thread number and team size**
+```C
+#include <omp.h>
+#include <iostream>
+
+int main() {
+    #pragma omp parallel
+    {
+        std::cout
+            << "Thread " << omp_get_thread_num()
+            << " out of " << omp_get_num_threads() << std::endl;
+    }
+    return 0;
+}
+```
+
+**Force a specific number of spawned threads (default is available cores)**
+```C
+#include <omp.h>
+#include <iostream>
+
+int main() {
+    #pragma omp parallel num_threads(5)
+    {
+        std::cout
+            << "Thread " << omp_get_thread_num()
+            << " out of " << omp_get_num_threads() << std::endl;
+    }
+    return 0;
+}
+```
+
+**Force some parts of multi-threaded code to run in serial using `critical`**
+```C
+#include <omp.h>
+#include <iostream>
+int main() {
+    int count = 0;
+    #pragma omp parallel
+    {
+        for(int i = 0; i < 100000; i++) {
+            #pragma omp critical
+            {
+                count++;
+            }
+        }
+    }
+    std::cout << count << std::endl;
+    return 0;
+}
+```
+**Force some parts of multi-threaded code to run in serial using `atomic`**
+```C
+#include <omp.h>
+#include <iostream>
+int main() {
+    int count = 0;
+    #pragma omp parallel
+    {
+        for(int i = 0; i < 100000; i++) {
+            #pragma omp atomic
+            {
+                count++;
+            }
+        }
+    }
+    std::cout << count << std::endl;
+    return 0;
+}
+```
+An atomic operation has much lower overhead. Where available, it takes advantage on the hardware providing (say) an atomic increment operation; in that case there's no lock/unlock needed on entering/exiting the line of code, it just does the atomic increment which the hardware tells you can't be interfered with.
+
+The upsides are that the overhead is much lower, and one thread being in an atomic operation doesn't block any (different) atomic operations about to happen. The downside is the restricted set of operations that atomic supports.
+
+**Critical section:**
+- Ensures serialisation of blocks of code.
+- Can be extended to serialise groups of blocks with proper use of "name" tag.
+- Slower!
+
+**Atomic operation:**
+- Is much faster!
+- Only ensures the serialisation of a particular operation.

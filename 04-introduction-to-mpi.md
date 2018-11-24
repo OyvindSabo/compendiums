@@ -116,6 +116,42 @@ MPI_Recv (
 - **tag**: Just a random number you make up. It has to be the same at sender and receiver. It’s used for matching up the right pairs when you have several send/receive pairs at the same time.
 - **communicator**: Collection of processes, for instance MPI_COMM_WORLD
 
+**Deadlock**\
+An `MPI_Send` will not proceed until a corresponding `MPI_Recv` has happened in the
+receiving process. If multiple processes are sending and receiving, in that particular order, we run the risk of both processes never initiating receiving, because they're mutually awaiting another process' revceive.
+
+**Deadlock examples**
+```C
+// Deadlock
+if (rank == 0) {
+    MPI_Send(..., 1, tag, MPI_COMM_WORLD);
+    MPI_Recv(..., 1, tag, MPI_COMM_WORLD, &status);
+} else if (rank == 1) {
+    MPI_Send(..., 0, tag, MPI_COMM_WORLD);
+    MPI_Recv(..., 0, tag, MPI_COMM_WORLD, &status);
+}
+```
+```C
+// Deadlock prevented by reversing order of send and receive for one processes
+if (rank == 0) {
+    MPI_Send(..., 1, tag, MPI_COMM_WORLD);
+    MPI_Recv(..., 1, tag, MPI_COMM_WORLD, &status);
+} else if (rank == 1) {
+    MPI_Send(..., 0, tag, MPI_COMM_WORLD);
+    MPI_Recv(..., 0, tag, MPI_COMM_WORLD, &status);
+}
+```
+```C
+// Deadlock prevented by using non-blocking send (MPI_Isend)
+if (rank == 0) {
+    MPI_Isend(..., 1, tag, MPI_COMM_WORLD, &req);
+    MPI_Recv(..., 1, tag, MPI_COMM_WORLD, &status);
+} else if (rank == 1) {
+    MPI_Send(..., 0, tag, MPI_COMM_WORLD);
+    MPI_Recv(..., 0, tag, MPI_COMM_WORLD, &status);
+}
+```
+
 ## Broadcasting
 
 **MPI_Bcast**\

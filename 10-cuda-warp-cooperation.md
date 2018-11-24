@@ -12,6 +12,43 @@ In an if-then-else statement. If some threads in a single warp evaluate to 'true
 
 While executing the then part, all threads that evaluated to false (e.g. the else threads) are effectively deactivated. When execution proceeds to the else condition, the situation is reversed. When some threads work their way through one path of a branch, the other threads in the warp are just idling. If your code is very heavy on branches, this can mean you effectively only use a very small part of the computing power available to you.
 
+Note that thread divergene can also occur in for-loops if each thread is prompted to run a different number of iterations. In the case where one thread loops through the numbers 0 to 10 and another thread loops through the numbers 0 to 20, thread divergence will not occur before both threads have finished their first 10 iterations.
+
+**Some examples on thread divergence**
+```C
+/*
+Does not cause thread divergence, since all the treads within the same warp are
+also within the same block, so either all of the threads within the same warp
+will fulfill the condition, or none of them will fulfill the condition.
+*/
+if (blockIdx.x > 16) {
+    foo();
+} else {
+    bar();
+}
+```
+```C
+/*
+Causes thread divergence, since each thread has a different threadIdx.x, causing
+the condition will evaluate to true for some threads and false for other
+threads.
+*/
+if (threadIdx.x > 16) {
+    foo();
+} else {
+    bar();
+}
+```
+```C
+/*
+Causes thread divergence, since each thread has a different threadIdx.x, and
+will run the loop a different number of times.
+*/
+for (int i = 0; i < threadIdx.x; i++) {
+    foo();
+}
+```
+
 **Thread divergence can cause deadlock**
 ```C
 //my_Func_then and my_Func_else are some device functions

@@ -21,10 +21,44 @@ In general a cache is a collection of memory locations that can be accessed in l
 **CPU cache**\
 A collection of memory locations that the CPU can access more quickly than it can access main memory.
 
-**Branching**
-Once we have a cache, an obvious problem is deciding which data and instructions should be stored in the cache. The universally used principle is based on the idea that programs tend to use data and instructions that are physically close to recently used data and instructions. After executing an instruction, programs typically execute the next instruction; branching tends to be relatively rare. Similarly, after a program has accessed one memory location, it often accesses a memory location that is physically nearby.
+**Locality**\
+Once we have a cache, an obvious problem is deciding which data and instructions should be stored in the cache. The universally used principle is based on the idea that programs tend to use data and instructions that are physically close to recently used data and instructions. After executing an instruction, programs typically execute the next instruction; **branching** tends to be relatively rare. Similarly, after a program has accessed one memory location, it often accesses a memory location that is physically nearby.
 
 The principle that an access of one location is followed by an access of a nearby location is often called locality. After accessing one memory location (instruction or data), a program will typically access a nearby location (spatial locality) in the near future (temporal locality).
+
+**Some examples on locality**
+```C
+/*
+Utilizes spatial locality because consequtive memory locations are accessed for
+every iteration of the for loop.
+*/
+for (int i = 0; i < 10000; i++) {
+    a[i] = b[i] + c[i];
+}
+```
+```C
+/*
+Utilizes spatial and temporal locality because consequtive memory locations are
+accessed for every iteration of the inner for loop, and the same memory
+locations are accessed for every iteration of the outer for loop.
+*/
+for(int i = 0; i < 100; i++) {
+    for(int j = 0; j < 100; j++) {
+      a[j] = b[j] + c[j];
+    }
+}
+```
+```C
+/*
+Utilizes temporal locality because the same memory locations are accessed for
+every iteration of the outer for loop
+*/ 
+for(int i = 0; i < 100; i++) {
+    for(j = 0; j < 10; j++) {
+        a[j*1000] += b[j * 2000] + c[j * 3000];
+    }
+}
+```
 
 **Cache eviction**\
 When more than one line in memory can be mapped to several different locations

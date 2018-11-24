@@ -21,6 +21,11 @@ In general a cache is a collection of memory locations that can be accessed in l
 **CPU cache**\
 A collection of memory locations that the CPU can access more quickly than it can access main memory.
 
+**Branching**
+Once we have a cache, an obvious problem is deciding which data and instructions should be stored in the cache. The universally used principle is based on the idea that programs tend to use data and instructions that are physically close to recently used data and instructions. After executing an instruction, programs typically execute the next instruction; branching tends to be relatively rare. Similarly, after a program has accessed one memory location, it often accesses a memory location that is physically nearby.
+
+The principle that an access of one location is followed by an access of a nearby location is often called locality. After accessing one memory location (instruction or data), a program will typically access a nearby location (spatial locality) in the near future (temporal locality).
+
 **Cache eviction**\
 When more than one line in memory can be mapped to several different locations
 in a cache, we need to be able to decide which line in the cache should be replaced. The most commonly used scheme is called **least recently used**. The cache has a record of the relative order in which the blocks have been used, and the least recently used line is evicted and replaced by a new line from memory.

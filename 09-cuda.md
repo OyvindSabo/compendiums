@@ -24,4 +24,4 @@ sum += array[n*thread_id + i];
 While the two pieces of code might seem to be equally efficient, the lower one better utilizes coalesced memory, since it reads consecutive values of an array. The top one skips sme values in the array, which means that the larger `n` grows, the more memory requests are required.
 
 **Memory striding**\
-Memory Striding is to access memory in an interleaved (discontinuous) manner. This results in an increased number of expensive memory accesses.
+Memory Striding is the act of accessing memory in an interleaved (discontinuous) manner. This results in an increased number of expensive memory accesses.

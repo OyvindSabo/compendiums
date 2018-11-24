@@ -146,10 +146,31 @@ if (rank == 0) {
 if (rank == 0) {
     MPI_Isend(..., 1, tag, MPI_COMM_WORLD, &req);
     MPI_Recv(..., 1, tag, MPI_COMM_WORLD, &status);
+    MPI_Wait(&req, &status)
 } else if (rank == 1) {
     MPI_Send(..., 0, tag, MPI_COMM_WORLD);
     MPI_Recv(..., 0, tag, MPI_COMM_WORLD, &status);
 }
+```
+**MPI_Isend prototype:**
+```C
+MPI_Isend (
+    const void *buf,
+    int count,
+    MPI_Datatype datatype,
+    int dest,
+    int tag,
+    MPI_Comm comm,
+    MPI_Request *request)
+```
+Note that `MPI_Isend()` has an MPI_request parameter which is not present in the noemal `MPI_Send`. `MPI_Isend` initiates an asynchronous send operation. All asynchronous operations are given a request handle that has to be acted on later, for instace using MPI_Wait.
+
+**MPI_Wait prototype:**
+```C
+MPI_Wait(
+    MPI_Request *request,
+    MPI_Status *status
+)
 ```
 
 ## Broadcasting

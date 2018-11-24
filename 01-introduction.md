@@ -83,6 +83,9 @@ MISD is a very rare processor type. One of the main places you will find it “i
 **MIMD**\
 CPUs have multiple cores nowadays. Each core can execute instructions independently, and cores can work on different pieces of data.
 
+The principal distinction between different MIMD systems is whether they are shared-memory or distributed-memory systems. In shared-memory systems, each processor or core can directly access every memory location, while in distributed-memory systems, each processor has its own private
+memory
+
 **SPMD**\
 Single Program Multiple Data is essentially MPI (Message Passing Interface); you run the same program on multiple physical machines, usually in the context of a supercomputer. These individual instances in turn execute the Same Program on Different pieces of Data.
 

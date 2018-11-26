@@ -21,6 +21,13 @@ In general a cache is a collection of memory locations that can be accessed in l
 **CPU cache**\
 A collection of memory locations that the CPU can access more quickly than it can access main memory.
 
+**The different levels of cache**\
+As the microprocessor processes data, it looks first in the cache memory. If it finds the instructions or data it's looking for there from a previous reading of data, it does not have to perform a more time-consuming reading of data from larger main memory or other data storage devices. Cache memory is responsible for speeding up computer operations and processing.
+
+Once they have been opened and operated for a time, most programs use few of a computer's resources. That's because frequently re-referenced instructions tend to be cached. This is why system performance measurements for computers with slower processors but larger caches can be faster than those for computers with faster processors but less cache space.
+
+Multi-tier or multilevel caching has become popular in server and desktop architectures, with different levels providing greater efficiency through managed tiering. Simply put, the less frequently certain data or instructions are accessed, the lower down the cache level the data or instructions are written.
+
 **Locality**\
 Once we have a cache, an obvious problem is deciding which data and instructions should be stored in the cache. The universally used principle is based on the idea that programs tend to use data and instructions that are physically close to recently used data and instructions. After executing an instruction, programs typically execute the next instruction; **branching** tends to be relatively rare. Similarly, after a program has accessed one memory location, it often accesses a memory location that is physically nearby.
 
@@ -67,6 +74,11 @@ for(int i = 0; i < 100; i++) {
 - Don't swap out of L2 cache (bring data into L2 cache in blocks).
 - Don't swap out of L1 cache.
 - Don't swap out of registers.
+
+**Cache memory mapping**
+- **Direct mapped cache** has each block mapped to exactly one cache memory location. Conceptually, direct mapped cache is like rows in a table with three columns: the data block or cache line that contains the actual data fetched and stored, a tag with all or part of the address of the data that was fetched, and a flag bit that shows the presence in the row entry of a valid bit of data.
+- **Fully associative cache** mapping is similar to direct mapping in structure but allows a block to be mapped to any cache location rather than to a prespecified cache memory location as is the case with direct mapping.
+- **Set associative cache** mapping can be viewed as a compromise between direct mapping and fully associative mapping in which each block is mapped to a subset of cache locations. It is sometimes called N-way set associative mapping, which provides for a location in main memory to be cached to any of "N" locations in the L1 cache.
 
 **Cache eviction**\
 When more than one line in memory can be mapped to several different locations

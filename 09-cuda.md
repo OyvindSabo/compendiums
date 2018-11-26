@@ -1,5 +1,9 @@
 # CUDA
 
+- CUDA is not C++
+- NVCC has to support a particular compiler to compile the “host” code
+- You may need to specify any architecture(s) you’d like to compile your kernels for.
+
 **Coalescing memory on GPUs**\
 Memory coalescing is a technique which allows for optimal usage of the global memory bandwidth. When parallel threads running the same instruction access to consecutive locations in the global memory, the most favorable access pattern is achieved.
 
@@ -26,7 +30,7 @@ While the two pieces of code might seem to be equally efficient, the lower one b
 **Memory striding**\
 Memory Striding is the act of accessing memory in an interleaved (discontinuous) manner. This results in an increased number of expensive memory accesses.
 
-### CUDA Terminology
+## CUDA Terminology
 The CUDA API distinguishes the CPU from the GPU:\
 Host: CPU side\
 Device: GPU side
@@ -44,7 +48,7 @@ __host__ void cpuFunction();
 ```
 Host and device functions cannot call each other.
 
-### Writing a basic CUDA program
+## Writing a basic CUDA program
 
 **Create a CUDA kernel**\
 To create a kernel (a method which can be called by CUDA), simply add `__global__` before the function declaration:
@@ -129,9 +133,44 @@ Compiling the program using `nvcc xxxx.cu -o xxxxx` yields xxxxx as an executabl
 If we call our program **myCudaProgram.cu**, we can compile it using the following command:
 `nvcc myCudaProgram.cu -o myCompiledCudaProgram`
 
-### Detecting bugs in a CUDA program
+## Memory management
 
+The GPU has its own memory banks, so memory needs to be allocated and
+copied to the GPU explicitly
 
+### Allocate memory
+**cudaMalloc prototype**\
+`cudaError_t cudaMalloc(void** devPtr, size_t size);`
+
+GPU cudaMalloc is similar to CPU malloc. It only allocates space, but does not populate it with any data.
+
+### Populate the allocated memory with data
+
+**cudaMemcpy prototype**\
+`cudaError_t cudaMemcpy(void* dest, const void* src, size_t count, cudaMemcpyKind kind);`
+
+**Move memory from HOST to DEVICE**
+```C
+cudaMemcpy(device_bigArray,
+           bigArray,
+           sizeof(float) * length,
+           cudaMemcpyHostToDevice);
+```
+
+**Move memory from DEVICE to HOST**
+```C
+cudaMemcpy(bigArray,
+           device_bigArray,
+           sizeof(float) * length,
+           cudaMemcpyDeviceToHost);
+```
+
+### Free memory
+`cudaError_t cudaFree(void** devicePointer);`
+
+## Detecting bugs in a CUDA program
+
+Given what we've gone through so far, let's see if we can debug a CUDA program.
 ```C
 __global__ void average(float* in, float* out, int N) {
     int index = threadIdx.x + blockDim.x*blockIdx.x;
@@ -178,6 +217,10 @@ float* func(int N) {
                out_dev,
                sizeof(float)*N,
                cudaMemcpyDeviceToHost);
+
+    // The code does not free memory
+
+    // If func is the main, then it should probably have a cudaDeviceSynchronize()
 
     return out_host;
 }

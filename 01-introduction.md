@@ -26,6 +26,8 @@ Once we have a cache, an obvious problem is deciding which data and instructions
 
 The principle that an access of one location is followed by an access of a nearby location is often called locality. After accessing one memory location (instruction or data), a program will typically access a nearby location (spatial locality) in the near future (temporal locality).
 
+Much of the effort in getting efficient code is in adapting it to keep the CPU supplied. If the CPU is not busy, the code is inefficient.
+
 **Some examples on locality**
 ```C
 /*
@@ -59,6 +61,12 @@ for(int i = 0; i < 100; i++) {
     }
 }
 ```
+
+**How to write efficient code with regards to cache**
+- Don't swap out of memory - reading from a hard disk takes “forever”.
+- Don't swap out of L2 cache (bring data into L2 cache in blocks).
+- Don't swap out of L1 cache.
+- Don't swap out of registers.
 
 **Cache eviction**\
 When more than one line in memory can be mapped to several different locations

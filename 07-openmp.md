@@ -2,7 +2,7 @@
 
 # 5 Shared Memory Programming with OpenMP
 
-Like Pthreads, OpenMP is an API for shared-memory parallel programming. The “MP” in OpenMP stands for “multiprocessing,” a term that is synonymous with shared-memory parallel computing. Thus, OpenMP is designed for systems in which each thread or process can potentially have access to all available memory, and, when we’re programming with OpenMP, we view our system as a collection of cores or CPUs, all of which have access to main memory
+Like **pthreads**, **OpenMP** is an API for shared-memory parallel programming. The “MP” in **OpenMP** stands for “**multiprocessing**,” a term that is synonymous with shared-memory parallel computing. Thus, OpenMP is designed for systems in which each thread or process can potentially have access to all available memory, and, when we’re programming with OpenMP, we view our system as a collection of cores or CPUs, all of which have access to main memory
 
 OpenMP was explicitly designed to allow programmers to incrementally parallelize existing serial programs. This is virtually impossible with MPI and fairly difficult with Pthreads.
 

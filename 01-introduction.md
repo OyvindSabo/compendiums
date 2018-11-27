@@ -204,7 +204,7 @@ In general, dividing the work of a serial program among the processes/threads in
 
 ### 2.6.2 Amdahl's law
 
-**Amdahls law**\
+**Amdahl's law**\
 If a fraction **r** of our serial program remains unparallelized, then Amdahl’s law says we can’t get a speedup better than **1/r**.\
 **S<sub>latency</sub>(s) = 1&frasl;<sub>(1-p+<sup>p</sup>&frasl;<sub>s</sub>)</sub>**
 
@@ -212,13 +212,15 @@ If a fraction **r** of our serial program remains unparallelized, then Amdahl’
 Amdahl's law applies only to cases where the problem size is fixed. Gustafson argues that as more computing resources become available, they tend to get used on larger datasets, and the time spent in the parallelizable part often grows much faster than the time spent in parts which have to be executed in serial. This means that as the number of processes increase, the speedup achieved by parallelization might actually exceed the maximum speedup calculated by Amdahls law, since the increased data size means that the fraction of the program which has to be executed in serial has decreased for this larger data set. Therefore, Gustafson's law gives a less pessimistic and more realistic assessment of the parallel performance.\
 **S<sub>latency</sub>(s) = (1 - p) + N p**
 
+In other words, increasing the problem size can save us from Amdahl's law.
+
 ### 2.6.3 Scalability
 
 **Scalable programs**\
 Formally, a parallel program is scalable if there is a rate at which the problem size can be increased so that as the number of processes/threads is increased, the efficiency remains constant
 
 **Strongly scalable programs**\
-A program is strongly scalable, if the problem size can remain fixed.
+A program is strongly scalable, if the program can scale, with the problem size remain fixed. If you can achieve good speedup without increasing problemsize, you have strong scaling.
 
 **Weakly scalable programs**\
 A program is weakly scalable if the problem size needs to be increased at the same rate as the number of processes/threads.

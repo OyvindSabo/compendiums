@@ -118,6 +118,9 @@ MPI_Recv (
 - **tag**: Just a random number you make up. It has to be the same at sender and receiver. It’s used for matching up the right pairs when you have several send/receive pairs at the same time.
 - **communicator**: Collection of processes, for instance MPI_COMM_WORLD
 
+**Branching**\
+The concept of MPI is based on the idea that a single program that can use branching to have multiple different behaviors.
+
 **Deadlock**\
 An `MPI_Send` will not proceed until a corresponding `MPI_Recv` has happened in the
 receiving process. If multiple processes are sending and receiving, in that particular order, we run the risk of both processes never initiating receiving, because they're mutually awaiting another process' revceive.

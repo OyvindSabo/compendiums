@@ -225,3 +225,18 @@ A program is weakly scalable if the problem size needs to be increased at the sa
 
 **Note**\
 Amdahl’s Law assumed a strict scaling setup (constant problem size in decreasing time) and Gustafson’s Law assumes a weak scaling setup (increasing problem size in fixed time).
+
+## 2.10 Summary
+
+### 2.10.2 Parallel hardware
+
+**Branching**\
+Branching in SIMD systems is handled by idling those processors that might operate on a data item to which the instruction doesn’t apply. This behavior makes SIMD systems poorly suited for task-parallelism, in which each processor executes a different task, or even data-parallelism, with many conditional branches.
+
+### 2.10.3 Parallel software
+
+**Branching**\
+Most programs for MIMD systems consist of a single program that obtains parallelism by branching. Such programs are often called single program, multiple data or SPMD programs.
+
+**Threads and processes**\
+In shared-memory programs we’ll call the instances of running tasks threads. In distributed-memory programs we’ll call them processes

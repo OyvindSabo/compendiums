@@ -8,7 +8,7 @@ You can think of MPI as a delivery service between processes. MPI enables proces
 
 In MPI, multiple copies of a Single program perform similar (although it might differ based on the data) computations on different data.
 
-MPI is considered SPMD (**S**ingle **P**rogram **M**ultiple **D**ata), which is technically a subcategory of MIMD (**M**ultiple **I**nstruction **M**ultiple **D**ata) in Flynn's taxonomy. The reason we classify it as SPMD and not MIMD is that it more exlistly emphasizes that all the multiple instructions are instances of the same pogram.
+MPI is considered SPMD (**S**ingle **P**rogram **M**ultiple **D**ata), which is technically a subcategory of MIMD (**M**ultiple **I**nstruction **M**ultiple **D**ata) in Flynn's taxonomy. SPMD programs consist of a single executable that can behave as if it were multiple different programs through the use of conditional branches. The reason we classify MPI as SPMD and not MIMD is that it more explistly emphasizes that all the multiple instructions are instances of the same pogram.
 
 ## Some simple examples
 

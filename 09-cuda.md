@@ -1,5 +1,8 @@
 # CUDA
 
+**The idea of CUDA**\
+The idea of CUDA is to do SIMD on a grand scale. Individual **threads** are part of groups called **warps**, within which every thread executes exactly the same sequence of instructions (although some of the instructions may be suppressed for some threads, giving the illusion of different execution sequences). NVidia calls it **S**ingle **I**nstruction, **M**ultiple **T**hread (**SIMT**), but it's essentially **SIMD**.
+
 - CUDA is not C++
 - NVCC has to support a particular compiler to compile the “host” code
 - You may need to specify any architecture(s) you’d like to compile your kernels for.

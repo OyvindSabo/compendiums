@@ -32,6 +32,23 @@ Cache memory is fast and expensive. Traditionally, it is categorized as "levels"
 - **L2 cache (~256 KB)**, or secondary cache, is often more capacious than L1. L2 cache may be embedded on the CPU, or it can be on a separate chip or coprocessor and have a high-speed alternative system bus connecting the cache and CPU. That way it doesn't get slowed by traffic on the main system bus.
 - **L3 cache (~10 MB)** is specialized memory developed to improve the performance of L1 and L2. L1 or L2 can be significantly faster than L3, though L3 is usually double the speed of RAM. With multicore processors, each core can have dedicated L1 and L2 cache, but they can share an L3 cache. If an L3 cache references an instruction, it is usually elevated to a higher level of cache.
 
+**Sample times comparing how long certain operations take**
+| Level                   | Time     |
+|-------------------------|----------|
+| CPU Cycle (4.3 GHz)     | 0.23 ns  |
+| L1 Cache Access         | 0.93 ns  |
+| L2 Cache Access         | 3.26 ns  |
+| L3 Cache Access         | 18.4 ns  |
+| RAM Access              | 68.4 ns  |
+| Intel Optane Access     | 14.9 μs  |
+| NVMe SSD Access         | 338 μs   |
+| SATA SSD Access         | 2.0 ms   |
+| Mechanical HDD Access   | 7.6 ms   |
+| Ping to uio.no          | 14.4 ms  |
+| Ping to ucla.edu        | 189.8 ms |
+| Windows installs update | 40 m     |
+
+
 **Locality**\
 Once we have a cache, an obvious problem is deciding which data and instructions should be stored in the cache. The universally used principle is based on the idea that programs tend to use data and instructions that are physically close to recently used data and instructions. After executing an instruction, programs typically execute the next instruction; **branching** tends to be relatively rare. Similarly, after a program has accessed one memory location, it often accesses a memory location that is physically nearby.
 

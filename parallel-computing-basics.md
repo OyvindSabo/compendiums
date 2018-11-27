@@ -16,6 +16,15 @@ The main challenges we are faced with today in computing, consist of the **Power
 
 `Power Wall + Memory Wall + ILP Wall = Brick Wall`
 
+### Most common performance issues in parallel programs according to Microsoft
+
+- **Amount of Parallelizable CPU-Bound Work:** The number one requirement for parallelization is that the program must have enough work that can be performed in parallel. If only half of the work can be parallelized, Amdahl’s Law dictates that we are not going to be able to speed up the program by more than a factor of two. 
+- **Task Granularity:** Even if a program does a lot of parallelizable work, we must be careful to ensure that we will split up the work into appropriately-sized chunks which will execute in parallel. If we create too many chunks, the overheads of managing and scheduling the chunks will be large. If we create too few chunks, some cores on the machine will have nothing to do.
+- **Load Balancing:** Even if there is enough parallelizable CPU work to make parallelism worthwhile, we need to ensure that the work will be evenly distributed among cores on the machine. This is complicated by the fact that different “chunks” of work may differ widely in the time required to execute them. Also, we often don’t know how much work each chunk will require until we execute it till completion.
+- **Memory Allocations and Garbage Collection:** Some programs spend a lot of time in memory allocations and garbage collections. Unfortunately, allocating memory is an operation that may require synchronization. After all, we need to ensure that memory regions allocated by different threads will not overlap. Perhaps even more seriously, allocating a lot of memory typically means that we will also need to do a lot of garbage collection work to reclaim memory that has been freed. If the garbage collection dominates the running time of your program, the program will only scale as well as the garbage collection algorithm.
+- **False Cache-Line Sharing:** If one core invalidates a particular memory location, the version of that memory location cached by another core gets invalidated. Then, the core with an invalid cached copy must go all the way to the main memory on the next read of that memory location. So, if two cores keep writing and reading a particular memory location, they may end up continuously invalidating each other’s caches, sometimes dramatically reducing the performance of the program.
+- **Locality Issues:** Sometimes modifying a program to run in parallel negatively affects locality. For example, let’s say that we want to perform an operation on each element on an array. On a dual-core machine, we could create two tasks: one to perform the operation on the elements with even indices and one to handle odd indices. As a negative consequence, the locality of reference degrades for each thread. 
+
 ### The difference between processes and threads
 
 **Processes:**\

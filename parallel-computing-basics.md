@@ -42,7 +42,7 @@ for (i = 0; i < 1000; i++)
 ```
 Consider the for loop above. If we have N complete floating point adders, we can approximately make the execution of the for loop N times faster, since each calculation is independent from the others and can be run concurrently.
 
-If the functional units are scheduled at compile time, the multiple issue system is said to use static multiple issue. If they’re scheduled at run-time, the system is said to use dynamic multiple issue. A processor that supports dynamic multiple issue is sometimes said to be superscalar.
+If the functional units are scheduled at compile time, the multiple issue system is said to use static multiple issue. If they’re scheduled at run-time, the system is said to use dynamic multiple issue. A processor that supports dynamic multiple issue is sometimes said to be superscalar (not the same as superlinear).
 
 **Speculation**\
 A common term for the techniques used in multiple issue to determine whether individual instructions are independent of each other.

@@ -4,6 +4,7 @@
 The idea of CUDA is to do SIMD on a grand scale. Individual **threads** are part of groups called **warps**, within which every thread executes exactly the same sequence of instructions (although some of the instructions may be suppressed for some threads, giving the illusion of different execution sequences). NVidia calls it **S**ingle **I**nstruction, **M**ultiple **T**hread (**SIMT**), but it's essentially **SIMD**.
 
 - CUDA is not C++
+- CUDA is limited to Nvidia GPUs.
 - NVCC has to support a particular compiler to compile the “host” code
 - You may need to specify any architecture(s) you’d like to compile your kernels for.
 
@@ -50,6 +51,15 @@ __global__ void mainKernel();
 __host__ void cpuFunction();
 ```
 Host and device functions cannot call each other.
+
+## Limits
+| Limits                       |                         |
+|------------------------------|-------------------------|
+| Max grid size                | [231 − 1, 65535, 65535] |
+| Max block size               | [1024, 1024, 64]        |
+| Max threads per block        | 1024                    |
+| Max number of warps per SM   | 64                      |
+| Max number of threads per SM | 2048                    |
 
 ## Writing a basic CUDA program
 
@@ -228,3 +238,6 @@ float* func(int N) {
     return out_host;
 }
 ```
+
+**Thread index**\
+`int threadIndex = blockIdx.x * blockDim.x + threadIdx.x`

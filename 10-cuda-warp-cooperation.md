@@ -68,3 +68,8 @@ The first half of the warp will execute the then part, then wait for the second 
 **How to prevent thread divergence**
 - Replace branches as much as possible with non-branching variants. For instance, if the then and else clause of an if statement are mostly the same, you can “cancel out” parts of the computation using arithmetic operations instead.
 - Use the built-in min, max, and abs wherever applicable, because they have hardware implementations due to their frequent occurrence.
+
+### Latency hiding
+A warp stalls when it is waiting for memory. The main idea of latency hiding is to use the time in which one warp is stalling to execute other ones. If we manage to fill our
+entire timeline with warps, we can then reorder the timeline, such that each time a warp was executing is grouped together. Since the processor was active all the time, it has executed all warps start to finish WITHOUT HAVING TO WAIT FOR THEIR MEMORY REQUESTS. This is called “latency hiding”, and is the primary reason why the register file is a thing, and why it is
+desirable to run many blocks on an SM at the same time.

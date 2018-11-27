@@ -261,3 +261,20 @@ It might be tempting to call MPI Reduce using the same buffer for both input and
 However, this call is illegal in MPI, so its result will be unpredictable. This is
 because the MPI Forum wanted to make the Fortran and C versions of MPI as similar
 as possible, and Fortran prohibits aliasing. Two arguments are aliased if they refer to the same block of memory.
+
+### Creating a custom MPI type
+
+**Prototype for MPI_Type_vector:**
+```C
+MPI_Type_vector(
+  int count,
+  int blocklength,
+  int stride, 
+  MPI_Datatype oldtype,
+  MPI_Datatype *newtype
+)
+```
+**count:** number of blocks (nonnegative integer)\
+**blocklength:** number of elements in each block (nonnegative integer)\
+**stride:** number of elements between start of each block (integer)\
+**oldtype:** old datatype (handle)

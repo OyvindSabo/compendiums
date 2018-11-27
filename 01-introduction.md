@@ -165,6 +165,12 @@ There are alternatives to mutexes. In busy-waiting, a thread enters a loop whose
 **Semaphores**\
 Semaphores are similar to mutexes, although the details of their behavior are slightly different, and there are some types of thread synchronization that are easier to implement with semaphores than mutexes.
 
+`int sem_post(sem_t *sem)` - Unlock a semaphore\
+**sem_post()** increments (unlocks) the semaphore pointed to by sem. If the semaphore's value consequently becomes greater than zero, then another process or thread blocked in a sem_wait(3) call will be woken up and proceed to lock the semaphore.
+
+`int sem_wait(sem_t *sem);` - Lock a semapore\
+**sem_wait()** decrements (locks) the semaphore pointed to by sem. If the semaphore's value is greater than zero, then the decrement proceeds, and the function returns, immediately. If the semaphore currently has the value zero, then the call blocks until either it becomes possible to perform the decrement (i.e., the semaphore value rises above zero), or a signal handler interrupts the call.
+
 ### 2.4.4 Distributed-memory
 
 **One-sided commuication**\

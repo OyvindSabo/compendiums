@@ -3,8 +3,11 @@
 **What is pthreads**\
 POSIX (Portable Operating System Interface) Threads, usually referred to as pthreads, is an execution model that exists independently from a language, as well as a parallel execution model. pthreads defines a set of C programming language types, functions and constants. It is implemented with a pthread.h header and a thread library.
 
+**Nondeterminism**\
+Any time the processors execute asynchronously, there is the potential for **nondeterminism**, that is, for a given input the behavior of the program can change from one run to the next. This can be a serious problem, especially in shared-memory programs.
+
 **Race conditions**\
-A race condition occurs when the result of a computation depends on the order of execution, and this order is not deterministic.
+If the nondeterminism results from two threads’ attempts to access the same resource, and it can result in an error, the program is said to have a **race condition**.
 
 **Critical sections**\
 A critical section happens when you have shared data between multiple threads or processes. We need to protect access to commonly accessed variables in critical sections.

@@ -167,3 +167,24 @@ for (int i=0;i<N;i++) {
     }
 }
 ```
+
+**Prevent erroneous calculations caused by numerical instability with OpenMP**
+```C
+double count = .0;
+#pragma omp parallel for
+for (int ii = 0; ii < 400; ii++) {
+    count += fourier_series(ii);
+}
+return count;
+```
+The code above will yield a different result each time because we use floats, because floating point operations are not commutative, that is, the order in which they are executed are not ambivalent.
+
+```C
+// I think this might work lol
+double count = .0;
+#pragma omp parallel for reduction(+:sum)
+for (int ii = 0; ii < 400; ii++) {
+    count += fourier_series(ii);
+}
+return count;
+```

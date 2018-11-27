@@ -200,6 +200,18 @@ MPI_Wait(
 )
 ```
 
+**A list of all MPI send methods**\
+MPI has a number of different "send modes." These represent different choices of buffering (where is the data kept until it is received) and synchronization (when does a send complete). In the following, "send buffer" is the user-provided buffer to send.
+
+- **MPI_Send** MPI_Send will not return until you can use the send buffer. It may or may not block (it is allowed to buffer, either on the sender or receiver side, or to wait for the matching receive).
+- **MPI_Bsend** May buffer; returns immediately and you can use the send buffer. A late add-on to the MPI specification. Should be used only when absolutely necessary.
+- **MPI_Ssend** will not return until matching receive posted
+- **MPI_Rsend** May be used ONLY if matching receive already posted. User responsible for writing a correct program.
+- **MPI_Isend** Nonblocking send. But not necessarily asynchronous. You can NOT reuse the send buffer until either a successful, wait/test or you KNOW that the message has been received (see MPI_Request_free). Note also that while the I refers to immediate, there is no performance requirement on MPI_Isend. An immediate send must return to the user without requiring a matching receive at the destination. An implementation is free to send the data to the destination before returning, as long as the send call does not block waiting for a matching receive. Different strategies of when to send the data offer different performance advantages and disadvantages that will depend on the application.
+- **MPI_Ibsend** buffered nonblocking
+- **MPI_Issend** Synchronous nonblocking. Note that a Wait/Test will complete only when the matching receive is posted.
+- **MPI_Irsend** As with MPI_Rsend, but nonblocking
+
 ## Broadcasting
 
 A broadcast is one of the standard collective communication techniques. During a broadcast, one process sends the same data to all processes in a communicator. One of the main uses of broadcasting is to send out user input to a parallel program, or send out configuration parameters to all processes.

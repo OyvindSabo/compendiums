@@ -12,7 +12,7 @@
 **Before:** We can reveal more instruction-level parallelism (ILP) via compilers and architecture innovation.\
 **Now:** There are diminishing returns on finding more ILP.
 
-The main challenges we are faced with today in computing, consist of the **Power Wall**, the **Memory Wall** and the **ILP Wall**. Together, these "walls" have been coined the **Brick wall**.
+The main challenges we are faced with today in computing, consist of the **Power Wall**, the **Memory Wall** and the **ILP Wall**. Together, these "walls" have been coined the **Brick wall** by Prof. David Patterson at UC Berkeley.
 
 `Power Wall + Memory Wall + ILP Wall = Brick Wall`
 

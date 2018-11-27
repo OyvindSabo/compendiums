@@ -27,6 +27,17 @@ The recommended OpenCL standard to use is 2.0 to 2.2, since it's bet
 | Thread        | Work-item    |
 | Shared Memory | Local Memory |
 
+**An old exam problem**\
+CUDA & OpenCL(Match the values)
+
+|                      | OpenCL Work-Item | OpenCL Work-Group | Processing Element |
+|----------------------|------------------|-------------------|--------------------|
+| AMD Stream Processor |                  |                   |                    |
+| CUDA Core            |                  |                   | x                  |
+| CUDA Thread block    |                  | x                 |                    |
+| CUDA Thread          | x                |                   |                    |
+| CUDA Warp            |                  |                   |                    | 
+
 **CUDA** is less verbose than **OpenCL**, but **OpenCL** is offered on a wider selection of devices.
 
 Since **OpenCL** is platform agnostic, there’s no warplevel instrinsics like CUDA has.

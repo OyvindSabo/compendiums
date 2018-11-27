@@ -177,6 +177,10 @@ MPI_Wait(
 
 ## Broadcasting
 
+A broadcast is one of the standard collective communication techniques. During a broadcast, one process sends the same data to all processes in a communicator. One of the main uses of broadcasting is to send out user input to a parallel program, or send out configuration parameters to all processes.
+
+One of the things to remember about collective communication is that it implies a synchronization point among processes. This means that all processes must reach a point in their code before they can all begin executing again. Collective operations do not have a tag argument.
+
 **MPI_Bcast**\
 Makes sure that every rank gets a copy of some data from a root rank.
 

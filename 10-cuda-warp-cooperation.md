@@ -73,3 +73,11 @@ The first half of the warp will execute the then part, then wait for the second 
 A warp stalls when it is waiting for memory. The main idea of latency hiding is to use the time in which one warp is stalling to execute other ones. If we manage to fill our
 entire timeline with warps, we can then reorder the timeline, such that each time a warp was executing is grouped together. Since the processor was active all the time, it has executed all warps start to finish WITHOUT HAVING TO WAIT FOR THEIR MEMORY REQUESTS. This is called “latency hiding”, and is the primary reason why the register file is a thing, and why it is
 desirable to run many blocks on an SM at the same time.
+
+### Making a CUDA program more efficient
+
+- Latency hiding
+- Coalesced memory
+- Avoid thread divergence
+- Avoid excessive use of `__syncThreads()`
+- Avoid double precision instructions (they take 32x times longer than single precision ones)

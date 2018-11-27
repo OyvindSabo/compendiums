@@ -1,3 +1,21 @@
+### The challenges of computing are changing**
+
+**The Power wall**\
+**Before:** Power is free, but transistors are expensive.\
+**Now:** Power is expensive, but transistors are “free”.
+
+**The Memory wall**\
+**Before:** Multiply is slow, but load and store is fast.\
+**Now:** Load and store is slow, but multiply is fast.
+
+**The ILP wall**\
+**Before:** We can reveal more instruction-level parallelism (ILP) via compilers and architecture innovation.\
+**Now:** There are diminishing returns on finding more ILP.
+
+The main challenges we are faced with today in computing, consist of the **Power Wall**, the **Memory Wall** and the **ILP Wall**. Together, these "walls" have been coined the **Brick wall**.
+
+`Power Wall + Memory Wall + ILP Wall = Brick Wall`
+
 ### The difference between processes and threads
 
 **Processes:**\

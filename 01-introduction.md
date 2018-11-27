@@ -236,7 +236,7 @@ Branching in SIMD systems is handled by idling those processors that might opera
 ### 2.10.3 Parallel software
 
 **Branching**\
-Most programs for MIMD systems consist of a single program that obtains parallelism by branching. Such programs are often called single program, multiple data or SPMD programs.
+Most programs for MIMD systems consist of a single program that obtains parallelism by branching. Such programs are often called single program, multiple data or SPMD programs. Branching may lead to performance issues on both CPUs and GPUs.
 
 **Threads and processes**\
 In shared-memory programs we’ll call the instances of running tasks threads. In distributed-memory programs we’ll call them processes

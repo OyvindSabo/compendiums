@@ -11,7 +11,7 @@ OpenCl is a language. OpenCL ships source code with the program, and the runtime
 
 The recommended OpenCL standard to use is 2.0 to 2.2, since it's bet
 
-**CUDA terminology vs OpenCL terminology**
+**CUDA terminology vs OpenCL terminology**\
 | CUDA                     | OpenCL             |
 |--------------------------|--------------------|
 |                          | Platform           |
@@ -19,6 +19,13 @@ The recommended OpenCL standard to use is 2.0 to 2.2, since it's bet
 | Device                   | Device             |
 | Streaming Multiprocessor | Compute unit       |
 | CUDA core                | Processing element |
+
+| CUDA          | OpenCL       |
+|---------------|--------------|
+| Grid          | NDRange      |
+| Block         | Workgroup    |
+| Thread        | Work-item    |
+| Shared Memory | Local Memory |
 
 **CUDA** is less verbose than **OpenCL**, but **OpenCL** is offered on a wider selection of devices.
 

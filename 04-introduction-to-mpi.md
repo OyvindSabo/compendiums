@@ -118,6 +118,28 @@ MPI_Recv (
 - **tag**: Just a random number you make up. It has to be the same at sender and receiver. It’s used for matching up the right pairs when you have several send/receive pairs at the same time.
 - **communicator**: Collection of processes, for instance MPI_COMM_WORLD
 
+**Advanced sending an receiving in MPI**\
+The MPI_Recv() requires the user to specify a specific sender ID and a specific tag:\
+```C
+MPI_Recv(buff, count, datatype, source, tag, communicator, status);
+```
+
+If you do not know in advance what values source and tag the message will be, you can use the wildcard values to receive the message, and then use the status variable to find out who the sender was:
+
+```C
+MPI_Recv(buff, count, type, MPI_ANY_SOURCE, MPI_ANY_TAG, communicator, status);
+```
+
+After the MPI_Recv() returns with a message, you can use these fields to find the source id of the sender and the tag of the message:
+
+```C
+status.SOURCE  = source id of sender;
+status.TAG     = tag of message;
+```
+
+
+
+
 **Branching**\
 The concept of MPI is based on the idea that a single program that can use branching to have multiple different behaviors.
 

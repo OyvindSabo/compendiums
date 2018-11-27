@@ -1,5 +1,8 @@
 # POSIX threads
 
+**What is pthreads**\
+POSIX (Portable Operating System Interface) Threads, usually referred to as pthreads, is an execution model that exists independently from a language, as well as a parallel execution model. pthreads defines a set of C programming language types, functions and constants. It is implemented with a pthread.h header and a thread library.
+
 **Race conditions**\
 A race condition occurs when the result of a computation depends on the order of execution, and this order is not deterministic.
 

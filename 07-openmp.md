@@ -134,3 +134,36 @@ The upsides are that the overhead is much lower, and one thread being in an atom
 **Atomic operation:**
 - Is much faster!
 - Only ensures the serialisation of a particular operation.
+
+**Debugging an OpenMP program**\
+```C
+#pragma omp parallel for
+for(int i = 0; i < 10; i++){
+    for(int j = 0; j < 10; j++){
+        array[i] += buffer[i*10 + j];
+        array[j] -= buffer[i*10 + j];
+    }
+}
+```
+Given the program above, let's find out what's wrong with it.
+Since we only use `#pragma omp parallel for` outside of the outer for-loop, only the outer for loop will be parallelized. That means that we will spawn ten processes, each of which executes the inner for loop with different values of `i`. That means that ten separate processes will try to set the value of `array[j]` at the same time, which will cause a race condition and make the program non-deterministic.
+
+**Parallelize nested for loops**
+```C
+// Parallelize only the outer for loop
+#pragma omp parallel for
+for (int i=0;i<N;i++) { 
+    for (int j=0;j<M;j++) {
+        //do task(i,j)//
+    }
+}
+```
+```C
+// Parallelize both the outer and the inner for loop
+#pragma omp parallel for collapse(2)
+for (int i=0;i<N;i++) { 
+    for (int j=0;j<M;j++) {
+        //do task(i,j)//
+    }
+}
+```

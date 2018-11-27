@@ -42,6 +42,15 @@ Threads run in a shared memory space.\
 A thread is an entity within a process.\
 Each thread shares the memory space of their owning process.
 
+**Differences between processes and threads in a table**
+| Process                                         | Threads                                |
+|-------------------------------------------------|----------------------------------------|
+| Processes are used for large tasks              | Threads are used for small tasks       |
+| Processes run in separate memory spaces         | Threads run in shared memory spaces    |
+| Processes have high resource consumption        | Threads have low resource consumption  |
+| A process is an executing instance of a program | A thread is an entity within a process |
+
+
 ### Instruction level parallellism (ILP)
 
 Without instruction-level parallelism, a processor can only issue less than one instruction per clock cycle (IPC < 1). These processors are known as subscalar processors. These instructions can be re-ordered and combined into groups which are then executed in parallel without changing the result of the program. This is known as instruction-level parallelism.

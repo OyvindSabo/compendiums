@@ -243,7 +243,7 @@ In other words, increasing the problem size can save us from Amdahl's law.
 Formally, a parallel program is scalable if there is a rate at which the problem size can be increased so that as the number of processes/threads is increased, the efficiency remains constant
 
 **Strongly scalable programs**\
-A program is strongly scalable, if the program can scale, with the problem size remain fixed. If you can achieve good speedup without increasing problemsize, you have strong scaling.
+A program is strongly scalable, if the program can scale, while the problem size remains fixed. If you can achieve good speedup without increasing problemsize, you have strong scaling.
 
 **Weakly scalable programs**\
 A program is weakly scalable if the problem size needs to be increased at the same rate as the number of processes/threads.

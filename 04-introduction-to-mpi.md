@@ -72,11 +72,11 @@ A communicator, a collection of processes that you want
 to group together.
 
 **MPI_Init**\
-When you call MPI_Init, it sets up a process called MPI_COMM_WORLD that
+When you call MPI_Init, it sets up a communicator called MPI_COMM_WORLD that
 contains all of your processes
 
 **MPI_Finalize**
-Terminates the MPI execution environment. You should call this when you don't need the MPI anymore.
+Terminates the MPI execution environment. You should call this when you don't need the MPI anymore. The MPI standard requires that MPI_Finalize be called only by the same thread that initialized MPI with either MPI_Init or MPI_Init_thread.
 
 **MPI_COMM_WORLD**\
 Collection of all your processes

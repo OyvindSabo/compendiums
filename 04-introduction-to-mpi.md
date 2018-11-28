@@ -111,15 +111,15 @@ MPI_Recv (
 ```
 **What do the arguments mean?**
 - **buffer** points to the transmitted data on the sending side. On the receiving side it points to a block of free memory where it will fit. If the sending side wants to transmit a variable called `myVariable`, **buffer** should be passed in as `&myVariable`. If the receiving side wants to store the received value in a variable called `yourVariable`, **buffer** should be set to `&yourVariable`
-- **elements**: THe number of elements to be sent
-- **type**: the MPI_Type can be MPI_INT, MPI_DOUBLE, MPI_BYTE, ...
+- **elements**: The number of elements to be sent
+- **type**: The MPI_Type can be MPI_INT, MPI_DOUBLE, MPI_BYTE, ...
 - **destination**: The rank of the receiving process.
 - **source**: The rank of the sending process from which a message is expected.
 - **tag**: Just a random number you make up. It has to be the same at sender and receiver. It’s used for matching up the right pairs when you have several send/receive pairs at the same time.
 - **communicator**: Collection of processes, for instance MPI_COMM_WORLD
 
 **Advanced sending an receiving in MPI**\
-The MPI_Recv() requires the user to specify a specific sender ID and a specific tag:\
+The MPI_Recv() requires the user to specify a specific sender ID and a specific tag:
 ```C
 MPI_Recv(buff, count, datatype, source, tag, communicator, status);
 ```
@@ -145,7 +145,7 @@ The concept of MPI is based on the idea that a single program that can use branc
 
 **Deadlock**\
 An `MPI_Send` will not proceed until a corresponding `MPI_Recv` has happened in the
-receiving process. If multiple processes are sending and receiving, in that particular order, we run the risk of both processes never initiating receiving, because they're mutually awaiting another process' revceive.
+receiving process (unless the buffer where the send buffer is being stored is cleared). If multiple processes are sending and receiving, in that particular order, we run the risk of both processes never initiating receiving, because they're mutually awaiting another process' revceive.
 
 **Deadlock examples**
 ```C

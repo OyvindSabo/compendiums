@@ -1,3 +1,12 @@
+# 3 Solving problems by searching
+
+## 3.7 Constraint Satisfaction Search
+
+### Backtracking search
+
+**What is backtrackig search**\
+To limit wasteful tree-searches, an improvement is to insert a test before each successive generation step to check whether any constraint has been violated by the variable assignments made up to this point. If this is thhe case, the resulting algorithm, called **backtracking search**,  then backtracks to try something else.
+
 ### Arc-consistency
 **What is arc-consistency**\
 A state is **arc-consistent** if every variable has a value in its domain that is consistent with each of the constraints on that variable. Arc consistency can be achieved by successive deletion of values that are inconsistent with some constraint. As values are deleted, other values may become inconsistent because they relied on the deleted values.

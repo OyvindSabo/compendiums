@@ -1,7 +1,5 @@
 # Informed Search Methods
 
-
-
 ## 4.2 Heuristic Functions
 
 ### Most-constrained-variable heuristic

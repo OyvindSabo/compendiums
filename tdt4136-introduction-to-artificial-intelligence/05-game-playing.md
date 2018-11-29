@@ -2,6 +2,9 @@
 
 ## 5.2 Perfect Decisions in Two-Person Games
 
+### Utility function
+A **utility function** is also called a **payoff function**. It gives a numeric value for the outcome of a game. In chess, the outcome is a win, loss, or draw, which we can represent by the values +1, —1, or 0. One might also try to approximate utility functions for a given state of a game.
+
 ### Mini-max
 
 **Example**\

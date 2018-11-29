@@ -9,4 +9,4 @@ of affairs in the universe being described.
 
 ### Satisfiability
 A sentence is satisfiable if and only if there is some interpretation in some world for
-which it is true. 
+which it is true.

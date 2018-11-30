@@ -31,3 +31,36 @@ allergicToCats(Mary)
 | allergies(Mary), ∀ x allergies(x) ⇒ sneeze(x)                                       | sneeze(Mary)    |
 | sneeze(mary), ¬sneeze(Mary)                                                          | CONTRADICTION   |
 Assuming that Mary does not sneeze results in a contradiction. This means that the answer to "Does Mary sneeze?" is **Yes**.
+
+## 9.6 Conversion to Normal Form
+- **Eliminate implications:** Replace all implications by the corresponding disjunctions.\
+p ⇒ q becomes ¬p V q.
+- **Move ¬ inwards:** Move negations inwards using de Morgan's law:\
+¬(p V q) becomes ¬p A ¬q\
+¬(p A q) becomes ¬p V ¬q\
+¬∀ x,p becomes Ǝx ¬p\
+¬Ǝ x,p becomes ∀x ¬p\
+¬¬p becomes p
+- **Distribute A over V:**  (a A b) V c becomes (a V c) A (b V c).
+- **Flatten nested conjunctions and disjunctions:**\
+(a V b) V c becomes (a V b V c)\
+(a A b) A c becomes (a A b A c)
+
+**Example**\
+Let's consider the sentence:\
+"Men and women are welcome to apply."
+
+We write this as first-order logic:\
+∀x [(M(x) V W(x)) ⇒ Apply(x)]
+
+First, let's eliminate implications:\
+∀x [¬(M(x) V W(x)) V Apply(x)]
+
+Next, we move negations inwards:\
+∀x [(¬M(x) A ¬W(x)) V Apply(x)]
+
+Next, we distribute A over V:\
+∀x [(¬M(x) V Apply(x)) A (¬W(x) V Apply(x))]
+
+Lastly, we flatten nested conjunctions and disjunctions. In this case there are no unflattened conjunctions nor disjunctions:\
+∀x [(¬M(x) V Apply(x)) A (¬W(x) V Apply(x))]

@@ -14,7 +14,7 @@ where **n** is the next node on the path, **g(n)** is the cost of the path from 
 
 **Example**\
 Let's say we have the following directed graph:
-![A star.png](https://cdn.steemitimages.com/DQmd4tZJ8L9Hwy7D2zsTGJkSfCTzbQnfjWY53WLSdPjheMs/A%20star.png)
+![A star.png](https://cdn.steemitimages.com/DQmeXPb6Q96GzgfDKj2ymQUvpaR5rCTSBJUhcnC8P8cMQ8b/A%20star.png)
 
 The numbers on the edges represent the cost of traveling between the nodes connected by the edge.
 
@@ -38,7 +38,46 @@ Shortest path: S B C A G
 ## 4.2 Heuristic Functions
 
 ### Consistent heuristics
-If we want to find the shortest solutions, we need a heuristic function that never overestimates the number of steps to the goal. In cases where one can only move horizontally and vertically, the **Manhattan distance** is an example of a heuristic function which will never overestimate h(n). The **Manhattan distance** is simply the sum of the horizontal distance plus the vertical distance from the target.
+If we want to find the shortest solutions, we need a heuristic function that never overestimates the number of steps to the goal. A heuristic function is said to be **consistent**, or **monotone**, if its estimate is always less than or equal to the estimated distance from any neighboring vertex to the goal, plus the cost of reaching that neighbor.
+
+In other words, for every node **N** and each successor **P** of **N**, the estimated cost of reaching the goal from **N** is no greater than the step cost of getting to **P** plus the estimated cost of reaching the goal from **P**. That is:
+
+h(N) &le; c(N,P)+h(P)\
+h(G)=0
+
+**Example**\
+Consider the graph below, as well as the following set of heuristic values:
+![A star.png](https://cdn.steemitimages.com/DQmeXPb6Q96GzgfDKj2ymQUvpaR5rCTSBJUhcnC8P8cMQ8b/A%20star.png)
+1. {h(S) = 7, h(A) = 6, h(B) = 2, h(C) = 1, h(G) = 0}
+2. {h(S) = 7, h(A) = 6, h(B) = 2, h(C) = 2, h(G) = 0}
+3. {h(S) = 7, h(A) = 6, h(B) = 4, h(C) = 2, h(G) = 0}
+4. {h(S) = 7, h(A) = 4, h(B) = 4, h(C) = 4, h(G) = 0}
+
+Let's see which of the heuristic values are consistent with the cost of the edges in the graph.
+
+**Let's consider the first set of heuristics**\
+h(s) = 7\
+c(S, B) + h(B) = 2 + 2 = 4\
+==> h(s) > c(S, B) + h(B)\
+==> Not consistent
+
+**Let's consider the second set of heuristics**\
+For the same reason as the first set of heuristics:
+==> Not consistent
+
+**Let's consider the third set of heuristics**\
+h(s) = 7\
+c(S, B) + h(B) = 2 + 4 = 6\
+==> h(s) > c(S, B) + h(B)\
+==> Not consistent
+
+**Let's consider the fourth set of heuristics**\
+For the same reason as the third set of heuristics:
+==> Not consistent
+
+It turns out that none of the heuristics were consistent, lol.
+
+
 
 ### Most-constrained-variable heuristic
 Most-constrained-variable heuristic is also called **minimum-remaining-values heuristic**. It is used with **forward checking**, which keeps track of which values are still allowed for each variable, given the choices made so far. At each point in the search, the variable with the fewest possible values is chosen to have a value assigned. In this way, the branching factor in the search tends to be minimized.

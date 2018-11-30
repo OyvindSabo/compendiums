@@ -1,6 +1,44 @@
 # Informed Search Methods
 
+## 4.1 Best-First Search
+
+Estimated remaining cost to the total goal: h(n)\
+Cost of the path so far: g(n)
+
+### A* search
+**A\* search** aims to find a path to the given goal node having the smallest cost (least distance travelled, shortest time, etc.). At each iteration of its main loop, **A\*** needs to determine which of its paths to extend. It does so based on the cost of the path and an estimate of the cost required to extend the path all the way to the goal. Specifically, A* selects the path that minimizes
+
+**f(n)=g(n)+h(n) f(n)=g(n)+h(n)**
+
+where **n** is the next node on the path, **g(n)** is the cost of the path from the start node to **n**, and **h(n)** is a heuristic function that estimates the cost of the cheapest path from n to the goal. **A\*** terminates when the path it chooses to extend is a path from start to goal or if there are no paths eligible to be extended.
+
+**Example**\
+Let's say we have the following directed graph:
+![A star.png](https://cdn.steemitimages.com/DQmd4tZJ8L9Hwy7D2zsTGJkSfCTzbQnfjWY53WLSdPjheMs/A%20star.png)
+
+The numbers on the edges represent the cost of traveling between the nodes connected by the edge.
+
+h(S)= 7\
+h(A)= 6\
+h(B)= 2\
+h(C)= 1\
+h(G)= 0
+
+Let's find the shortest path from S to G.
+
+| Node which is currently being expanded | Queue                    |
+|----------------------------------------|--------------------------|
+| S(7)                                   | A(1+6, S), B(2+2, S)     |
+| B(4, S)                                | C(4+1, SB), A(1+6, S)    |
+| C(5, SB)                               | G(4+3, SBC), A(1+6, S)   |
+| A(7, S)                                | G(4+3, SBC), G(1+13, SA) |
+| G(7, SBC)                              | GOAL                     |
+Shortest path: S B C A G
+
 ## 4.2 Heuristic Functions
+
+### Consistent heuristics
+If we want to find the shortest solutions, we need a heuristic function that never overestimates the number of steps to the goal. In cases where one can only move horizontally and vertically, the **Manhattan distance** is an example of a heuristic function which will never overestimate h(n). The **Manhattan distance** is simply the sum of the horizontal distance plus the vertical distance from the target.
 
 ### Most-constrained-variable heuristic
 Most-constrained-variable heuristic is also called **minimum-remaining-values heuristic**. It is used with **forward checking**, which keeps track of which values are still allowed for each variable, given the choices made so far. At each point in the search, the variable with the fewest possible values is chosen to have a value assigned. In this way, the branching factor in the search tends to be minimized.

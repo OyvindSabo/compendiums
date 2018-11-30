@@ -45,7 +45,7 @@ In other words, for every node **N** and each successor **P** of **N**, the esti
 h(N) &le; c(N,P)+h(P)\
 h(G)=0
 
-**Example**\
+**Example of non-consistent heuristics**\
 Consider the graph below, as well as the following set of heuristic values:
 ![A star.png](https://cdn.steemitimages.com/DQmeXPb6Q96GzgfDKj2ymQUvpaR5rCTSBJUhcnC8P8cMQ8b/A%20star.png)
 1. {h(S) = 7, h(A) = 6, h(B) = 2, h(C) = 1, h(G) = 0}
@@ -77,6 +77,15 @@ For the same reason as the third set of heuristics:
 
 It turns out that none of the heuristics were consistent, lol.
 
+**Let's create a consistent set of heuristics**\
+Again, we have our graph:
+![A star.png](https://cdn.steemitimages.com/DQmeXPb6Q96GzgfDKj2ymQUvpaR5rCTSBJUhcnC8P8cMQ8b/A%20star.png)
+The easiest way to write consistent heuristics is to start at the goal and work our way backwards, always selecting heuristic values matching the lowest sum of distance to an adjacent node and that node's heuristic value.
+{h(G) = 0}\
+{h(C) = 3, h(G) = 0}\
+{h(B) = 5, h(C) = 3, h(G) = 0}\
+{h(A) = 7, h(B) = 5, h(C) = 3, h(G) = 0}\
+{h(S) = 7, h(A) = 7, h(B) = 5, h(C) = 3, h(G) = 0}
 
 
 ### Most-constrained-variable heuristic

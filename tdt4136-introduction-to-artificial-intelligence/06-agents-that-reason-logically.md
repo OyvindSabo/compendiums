@@ -1,5 +1,7 @@
 # Agents that Reason Logically
 
+# 6.3 Representation, Reasoning and Logic
+
 ### Inference
 The terms **"reasoning"** and **"inference"** are generally used to cover any process by which conclusions are reached.
 
@@ -7,6 +9,28 @@ The terms **"reasoning"** and **"inference"** are generally used to cover any pr
 A sentence is **valid** or **necessarily true** if and only if it is true under all possible interpretations in all possible worlds, that is, regardless of what it is supposed to mean and regardless of the state
 of affairs in the universe being described.
 
+**Example**\
+Let's consider whether the following sentence is valid.\
+∀x[[Student(x) ∧ ¬Student(x)] ⇒ BornOn(x, Moon)]
+
+TO take up less space, let's define the following:\
+S(x) = Student(x)\
+B(x, y) = BornOn(x, y)
+
+Let's solve this by using a truth table:
+| S(x)  | ¬S(x) | S(x) ∧ ¬S(x) | B(x, Moon) | [S(x) ∧ ¬S(x)] ⇒ B(x, Moon) |
+|-------|-------|--------------|------------|------------------------------|
+| True  | False | False        | False      | True                         |
+| False | True  | False        | False      | True                         |
+
+The sentence is true for all S(x), and therefore all x. This means that the sentence is valid.
+
 ### Satisfiability
-A sentence is satisfiable if and only if there is some interpretation in some world for
-which it is true.
+A sentence is satisfiable if and only if there is some interpretation in some world for which it is true.
+
+### Unsatisfiability
+A sentence that is not satisfiable is unsatisfiable. Self-contradictory sentences are unsatisfiable, if
+the contradictoriness does not depend on the meanings of the symbols.
+
+## 6.4 Propositional Logic: A Very Simple Logic
+A sentence such as (P ∧ Q) ⇒ R is called an **implication** (or **conditional**). Its **premise** or **antecedent** is P A Q, and its **conclusion** or **consequent** is R.

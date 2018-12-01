@@ -90,6 +90,9 @@ The easiest way to write consistent heuristics is to start at the goal and work 
 {h(A) = 7, h(B) = 5, h(C) = 3, h(G) = 0}\
 {h(S) = 7, h(A) = 7, h(B) = 5, h(C) = 3, h(G) = 0}
 
+### Admissible heuristic
+An **admissable heuristic** is a heuristic which never overestimates **h(n)** the remaining cost to reach the goal. Admissible heuristics are by nature optimistic, because they think the cost of solving the problem is less than it actually is.
+
 
 ### Most-constrained-variable heuristic
 Most-constrained-variable heuristic is also called **minimum-remaining-values heuristic**. It is used with **forward checking**, which keeps track of which values are still allowed for each variable, given the choices made so far. At each point in the search, the variable with the fewest possible values is chosen to have a value assigned. In this way, the branching factor in the search tends to be minimized.

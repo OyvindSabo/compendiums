@@ -41,10 +41,10 @@ p ⇒ q becomes ¬p V q.
 ¬∀ x,p becomes Ǝx ¬p\
 ¬Ǝ x,p becomes ∀x ¬p\
 ¬¬p becomes p
-- **Distribute A over V:**  (a A b) V c becomes (a V c) A (b V c).
+- **Distribute A over V:**  (a ∧ b) V c becomes (a V c) ∧ (b V c).
 - **Flatten nested conjunctions and disjunctions:**\
 (a V b) V c becomes (a V b V c)\
-(a A b) A c becomes (a A b A c)
+(a A b) ∧ c becomes (a ∧ b ∧ c)
 
 **Example**\
 Let's consider the sentence:\
@@ -57,10 +57,25 @@ First, let's eliminate implications:\
 ∀x [¬(M(x) V W(x)) V Apply(x)]
 
 Next, we move negations inwards:\
-∀x [(¬M(x) A ¬W(x)) V Apply(x)]
+∀x [(¬M(x) ∧ ¬W(x)) V Apply(x)]
 
 Next, we distribute A over V:\
-∀x [(¬M(x) V Apply(x)) A (¬W(x) V Apply(x))]
+∀x [(¬M(x) V Apply(x)) ∧ (¬W(x) V Apply(x))]
 
 Lastly, we flatten nested conjunctions and disjunctions. In this case there are no unflattened conjunctions nor disjunctions:\
-∀x [(¬M(x) V Apply(x)) A (¬W(x) V Apply(x))]
+∀x [(¬M(x) V Apply(x)) ∧ (¬W(x) V Apply(x))]
+
+### Skolemization
+Skolemization is the process of removing existential quantifiers (Ǝ) by elimination.\
+
+Not skolemized: ∀x Person(x) ⇒ Ǝy Heart(y) ∧ Has(x,y)\
+Skolemized: ∀x Person(x) ⇒ Heart(F(x)) ∧ Has(x,F(x))
+
+Note that the reason we swap y with F(x), and not just a constant F, is that in this case for every x, there exists at least one y. It is not given that the y which exists is the same for every x. We therefore need to make y a function of x.
+
+**Example**
+Let's skolemize the following sentence:\
+∀x[(¬P(x) ∧ Q(x)) ∨ ∃y(R(x, y) ∧ T(y)))]
+
+We want to remove the existential quantifier for y, so we need to swap y with f(x).\
+∀x[(¬P(x) ∧ Q(x)) ∨ (R(x, f(x)) ∧ T(f(x))))]

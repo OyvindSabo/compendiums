@@ -7,3 +7,16 @@
 
 ### Semantic networks
 Just like **frame systems**, **semantic networks** use the metaphor that objects are nodes in a graph, that these nodes are organized in a taxonomic structure, and that links between nodes represent binary relations. In semantic networks, however, the binary relations are thought of as arrows between nodes. In general, though, the term **semantics network** is used to describe both **semantic networks** and **frame systems**. Semantic networks differ in how they handle the case of inheriting multiple different values.
+
+## 10.2 Indexing, Retrieval and Unification
+
+### Precision
+**Precision** (also called **positive predictive value**) is the fraction of relevant instances among the retrieved instances.
+
+### Recall
+**Recall** (also known as sensitivity) is the fraction of relevant instances that have been retrieved over the total amount of relevant instances.
+
+### F1-score
+The **F1-score** (also called F-score or F-measure) is a measure of a test's accuracy. It considers both the **precision** and the **recall** of the test to compute the score.
+
+<sup>(2 * precision * recall)</sup>/<sub>(precision + recall)</sub>

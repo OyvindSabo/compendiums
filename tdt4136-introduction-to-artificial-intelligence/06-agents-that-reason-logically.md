@@ -3,7 +3,7 @@
 # 6.3 Representation, Reasoning and Logic
 
 ### Closed-world assumption
-The **closed-world assumption** is the presumption that a statement that is true is also known to be true. Therefore, conversely, what is not currently known to be true, is false.
+The **closed-world assumption**, in a formal system of logic, is the presumption that a statement that is true is also known to be true. Therefore, conversely, what is not currently known to be true, is false.
 
 
 ### Entailment

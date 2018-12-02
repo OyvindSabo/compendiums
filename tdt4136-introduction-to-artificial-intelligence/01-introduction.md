@@ -10,4 +10,10 @@ Alan Newel and Herbert Simon suggested that any **physical symbol system** has n
 Although many, including Jefferson, have claimed that thinking necessarily involves consciousness, the issue is most commonly associated with the work of the philosopher John Searle.
 
 ## 1.2 The FOundation of Artificial Intelligence
-Alan Turing showed that there were some functions that no Turing machine can compute. For example, no machine can tell in general whether a given program will return an answer on a given input, or run forever.
+
+### Decidability
+In logic, a true/false decision problem is decidable if there exists an effective method for deriving the correct answer (instead of looping indefinitely, crashing, returning "don't know", or returning a wrong answer).
+
+Kurt Godel's **incompleteness theorem** showed that in any language expressive enough to describe the properties of the natural numbers, there are true statements that are **undecidable**: their truth cannot be established by any algorithm.
+
+Alan Turing showed that there were some functions that no Turing machine can compute. These classes of problems are said to be **undecidable**. For example, no machine can tell in general whether a given program will return an answer on a given input, or run forever.

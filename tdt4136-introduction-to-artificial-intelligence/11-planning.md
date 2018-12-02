@@ -34,6 +34,11 @@ Action (withdraw(cash),
   EFFECT: -hasMoneyOnAccount (person) ∧ have (cash) )
 ```
 
+### Situation Space and Plan Space
+
+**Progression planner**\
+A **progression planner** (also called **situation space planner**) is a planner which searches forward from the initial situation to the goal situation.
+
 ### Representations for plans
 
 **Least commitment**\

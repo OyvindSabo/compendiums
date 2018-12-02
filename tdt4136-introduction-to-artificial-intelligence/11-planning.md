@@ -39,6 +39,10 @@ Action (withdraw(cash),
 **Progression planner**\
 A **progression planner** (also called **situation space planner**) is a planner which searches forward from the initial situation to the goal situation.
 
+**Regression planner**\
+One way to try to cut the branching factor is to search backwards, from the goal state to the
+initial state; such a search is called regression planning. This approach is possible because the operators contain enough information to regress from a partial description of a result state to a partial description of the state before an operator is applied.
+
 ### Representations for plans
 
 **Least commitment**\

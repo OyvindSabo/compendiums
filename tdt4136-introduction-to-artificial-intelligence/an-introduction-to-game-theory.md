@@ -32,5 +32,36 @@ We can see that there is no action agent i can take which is dominant for every 
 ### Weakly dominant strategy
 A weakly dominant strategy is that strategy that provides at least the same utility for all the other player’s strategies, and strictly greater for some strategy.
 
+**Example**\
+Consider the payoff matrix below. Wach agent can choose to go either north or south, for instance as part of a war strategy.
+
+| agent i \ agent j | North | South |
+|-------------------|-------|-------|
+| **North**         | 2, -2 | 2, -2 |
+| **South**         | 1, -1 | 3, -3 |
+Let's find out which options will give the weakly dominant equilibrium.
+
+Let's first consider the actions from agent i's perspective.
+- If agent j goes North, then agent i's dominant action is to go North.
+- If agent j goes South, then agent i's dominant action is to go South.
+
+This means that agent i has no dominant strategy.
+
+Next, let's consider the actions from agent j's perspective.
+- If agent i goes North, then agent j's dominant action is to go either North or South.
+- If agent i goes South, then agent j's dominant action is to go North.
+
+This means that going north is a weakly dominant action for agent j, since it's always better or as good as any other action.
+
+We can then assume that agent j will choose to go North. This means that agent i no longer has to consider the option of agent j going South. Agent i then only has to consider the following paayoff matrix:
+| agent i \ agent j | North |
+|-------------------|-------|
+| **North**         | 2, -2 |
+| **South**         | 1, -1 |
+
+When assuming that agent j is going North, the dominant action for agent i is to go North as well.
+
+This means that the weakly dominant equilibrium is for both agents to go North.
+
 ### Nash Equilibrium
 A Nash equilibrium, named after John Nash, is a set of strategies, one for each player, such that no player has incentive to unilaterally change her action. Players are in equilibrium if a change in strategies by any one of them would lead that player to earn less than if she remained with her current strategy. For games in which players randomize (mixed strategies), the expected or average payoff must be at least as large as that obtainable by any other strategy.

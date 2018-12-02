@@ -40,7 +40,13 @@ Action (withdraw(cash),
 Many planners use the principle of **least commitment**, which says that one should only make choices about things that you currently care about, leaving the other choices to be worked out later. This is a good idea for programs that search, because if you make a choice about something you don't care about now, you are likely to make the wrong choice and have to backtrack later.
 
 **Partial order planner**\
-A planner that can represent plans in which some steps are ordered (before or after) with respect to each other and other steps are unordered is called a **partial order planner**.
+A planner that can represent plans in which some steps are ordered (before or after) with respect to each other and other steps are unordered is called a **partial order planner**. It only commits ordering between actions when forced to.
+
+A partial order plan consists of four components:
+- A set of **actions** (also known as operators).
+- A **partial order** for the actions. It specifies the conditions about the order of some actions.
+- A set of **causal links**. It specifies which actions meet which preconditions of other actions. Alternatively, a set of bindings between the variables in actions.
+-  set of **open preconditions**. It specifies which preconditions are not fulfilled by any action in the partial-order plan.
 
 **Total order planner**\
 A **total order planner** is a planner whose plan is a simple list of steps.

@@ -33,3 +33,18 @@ Action (withdraw(cash),
   PRECOND: At(ATM) ∧ Sells(ATM, cash, person) ∧ hasMoneyOnAccount (person)
   EFFECT: -hasMoneyOnAccount (person) ∧ have (cash) )
 ```
+
+### Representations for plans
+
+**Least commitment**\
+Many planners use the principle of **least commitment**, which says that one should only make choices about things that you currently care about, leaving the other choices to be worked out later. This is a good idea for programs that search, because if you make a choice about something you don't care about now, you are likely to make the wrong choice and have to backtrack later.
+
+**Partial order planner**\
+A planner that can represent plans in which some steps are ordered (before or after) with respect to each other and other steps are unordered is called a **partial order planner**.
+
+**Total order planner**\
+A **total order planner** is a planner whose plan is a simple list of steps.
+
+**Linearization**\
+A totally ordered plan that is derived from a plan P by adding ordering constraints is called a
+**linearization** of P.

@@ -2,6 +2,10 @@
 
 # 6.3 Representation, Reasoning and Logic
 
+### Closed-world assumption
+The **closed-world assumption** is the presumption that a statement that is true is also known to be true. Therefore, conversely, what is not currently known to be true, is false.
+
+
 ### Entailment
 To generate new sentences that are necessarily true, given that the old sentences are true is called entailment, and mirrors the relation of one fact following from another.
 

@@ -3,13 +3,28 @@
 ## 11.4 Basic Representations for Planning
 
 ### The STRIPS language
-The "classical" approach that most planners use today describes states and operators in a restricted
-language known as the **STRIPS** (**St**andford **R**esearch **I**nstitute **P**roblem **S**olver) language  or in extensions thereof. The STRIPS language lends itself to efficient planning algorithms, while retaining much of the expressiveness of situation calculus representations.
+**STRIPS** (**St**andford **R**esearch **I**nstitute **P**roblem **S**olver) is a State-based view of time. Actions are external to the logic. Given a state and an action, the STRIPS representation is used to determine whether the action can be carried out in the state and what is true in the resulting state.
 
-STRIPS operators consist of three components:
-- **The action description** is what an agent actually returns to the environment in order to do something. Within the planner it serves only as a name for a possible action.
-- **The precondition** is a conjunction of atoms (positive literals) that says what must be true before the operator can be applied.
-- **The effect** of an operator is a conjunction of literals (positive or negative) that describes how the situation changes when the operator is applied.
+**STRIPS representation of an action**\
+The STRIPS representation for an action consists of:
+- **Preconditions:** A list of atoms that need to be true for the action to occur.
+- **Delete list:** A list of those primitive relations no longer true after the action.
+- **Add list:** A list of the primitive relations made true by the action
 
-**Example of a STRIPS operator**\
-Op(ACTION:Go(there), PRECOND:At(here)A Path(here,there), EFFECT:At(there)A ¬At(here))
+**Example of withdrawing cash from an ATM in STRIPS**
+```
+Action (withdraw(cash),
+  PRECOND: At(ATM) ∧ Sells(ATM, cash, person) ∧ hasMoneyOnAccount(person)
+  DELETE-LIST: hasMoneyOnAccount(person)
+  ADD-LIST: have (cash))
+```
+
+### PDDL
+**PDDL** (**P**roblem **D**omain **D**escription **L**anguage) is a recent attempt to standardize planning domain and problem description languages. It was developed mainly to make the 1998/2000 International Planning Competitions possible. **PDDL** contains **STRIPS**, **ADL** and more.
+
+**Example of withdrawing cash from an ATM in PDDL**
+```
+Action (withdraw(cash),
+  PRECOND: At(ATM) ∧ Sells(ATM, cash, person) ∧ hasMoneyOnAccount (person)
+  EFFECT: -hasMoneyOnAccount (person) ∧ have (cash) )
+```

@@ -8,3 +8,6 @@ Newell and Simon, who developed GPS, the "General Problem Solver" (Newell and Si
 Alan Newel and Herbert Simon suggested that any **physical symbol system** has necessary and sufficient means for general intelligent action
 
 Although many, including Jefferson, have claimed that thinking necessarily involves consciousness, the issue is most commonly associated with the work of the philosopher John Searle.
+
+## 1.2 The FOundation of Artificial Intelligence
+Alan Turing showed that there were some functions that no Turing machine can compute. For example, no machine can tell in general whether a given program will return an answer on a given input, or run forever.

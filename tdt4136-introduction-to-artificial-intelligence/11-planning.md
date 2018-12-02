@@ -5,6 +5,11 @@
 ### The STRIPS language
 **STRIPS** (**St**andford **R**esearch **I**nstitute **P**roblem **S**olver) is a State-based view of time. Actions are external to the logic. Given a state and an action, the STRIPS representation is used to determine whether the action can be carried out in the state and what is true in the resulting state.
 
+**STRIPS representation of an operation**
+- **The action:** What an agent actually returns to the environment in order to do something. Within the plariner it serves only as a name for a possible action.
+- **The precondition:** A conjunction of atoms (positive literals) that says what must be true before the operator can be applied.
+- **The effect:** A conjunction of literals (positive or negative) that describes how the situation changes when the operator is applied.
+
 **STRIPS representation of an action**\
 The STRIPS representation for an action consists of:
 - **Preconditions:** A list of atoms that need to be true for the action to occur.

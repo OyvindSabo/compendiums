@@ -2,6 +2,9 @@
 
 # 6.3 Representation, Reasoning and Logic
 
+### Entailment
+To generate new sentences that are necessarily true, given that the old sentences are true is called entailment, and mirrors the relation of one fact following from another.
+
 ### Inference
 The terms **"reasoning"** and **"inference"** are generally used to cover any process by which conclusions are reached.
 

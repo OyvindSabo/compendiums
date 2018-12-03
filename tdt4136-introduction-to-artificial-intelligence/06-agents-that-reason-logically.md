@@ -7,7 +7,10 @@ The **closed-world assumption**, in a formal system of logic, is the presumption
 
 
 ### Entailment
-To generate new sentences that are necessarily true, given that the old sentences are true is called entailment, and mirrors the relation of one fact following from another.
+An sentece α entails a sentence β if and only if there is no truth assignment that makes α true and β false. If one sentence entails another it menas that the other sentence is logically deductible from the first one.
+
+**Example**\
+A ∧ B ∧ C ⊨ B
 
 ### Circumscription
 Circumscription allows the entailed sentences to be removed after new sentences added to the knowledge base.

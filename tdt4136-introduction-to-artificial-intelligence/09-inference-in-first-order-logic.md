@@ -81,3 +81,9 @@ Let's skolemize the following sentence:\
 
 We want to remove the existential quantifier for y, so we need to swap y with f(x).\
 ∀x[(¬P(x) ∧ Q(x)) ∨ (R(x, f(x)) ∧ T(f(x))))]
+
+## 9.7 Completeness of Resolution
+
+### Rewrite to clausal form
+- Get rid of Ǝ.
+- Rewrite A ⇒ B to ¬A V B

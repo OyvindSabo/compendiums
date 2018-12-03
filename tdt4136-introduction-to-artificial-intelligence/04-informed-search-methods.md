@@ -15,6 +15,8 @@ Uniform cost search modifies the breadth-first strategy by always expanding the 
 
 where **n** is the next node on the path, **g(n)** is the cost of the path from the start node to **n**, and **h(n)** is a heuristic function that estimates the cost of the cheapest path from n to the goal. Note that A* where all h(n) = 0 is equivalent to **uniform cost search**. **A\*** terminates when the path it chooses to extend is a path from start to goal or if there are no paths eligible to be extended.
 
+For A* to be optimal, the heuristic must be both admissable and optimal.
+
 **Example**\
 Let's say we have the following directed graph:
 ![A star.png](https://cdn.steemitimages.com/DQmeXPb6Q96GzgfDKj2ymQUvpaR5rCTSBJUhcnC8P8cMQ8b/A%20star.png)

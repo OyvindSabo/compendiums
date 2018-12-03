@@ -2,6 +2,11 @@
 
 ## 3.7 Constraint Satisfaction Search
 
+### Terms
+- **Variables:** That whose values shall be decided.
+- **Domain:** All possible values.
+- **Constrints:** Limitations about what values can be given to certain variables.
+
 ### Backtracking search
 
 **What is backtrackig search**\

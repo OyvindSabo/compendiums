@@ -46,6 +46,8 @@ p ⇒ q becomes ¬p V q.
 (a V b) V c becomes (a V b V c)\
 (a A b) ∧ c becomes (a ∧ b ∧ c)
 
+Also note that ¬A V A can be remove, since it doesn't say anything.
+
 **Example**\
 Let's consider the sentence:\
 "Men and women are welcome to apply."

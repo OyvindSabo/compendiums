@@ -44,3 +44,11 @@ the contradictoriness does not depend on the meanings of the symbols.
 
 ## 6.4 Propositional Logic: A Very Simple Logic
 A sentence such as (P ∧ Q) ⇒ R is called an **implication** (or **conditional**). Its **premise** or **antecedent** is P A Q, and its **conclusion** or **consequent** is R.
+
+### What's great about propositional logic?
+- Propositional logic is declarative: Pieces of syntax correspond to facts
+- Propositional logic allows partial/disjunctive/negated information
+- Propositional logic is compositional
+
+### What's bad about propositional logic?
+- Propositional logic has very limited expressive power.

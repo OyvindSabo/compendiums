@@ -32,7 +32,9 @@ allergicToCats(Mary)
 | sneeze(mary), ¬sneeze(Mary)                                                          | CONTRADICTION   |
 Assuming that Mary does not sneeze results in a contradiction. This means that the answer to "Does Mary sneeze?" is **Yes**.
 
-## 9.6 Conversion to Normal Form
+## 9.6 Conversion to Conjunctive Normal Form
+**Conjunctive Normal Form** is also called **CNF** or 
+**clausal form**.
 - **Eliminate implications:** Replace all implications by the corresponding disjunctions.\
 p ⇒ q becomes ¬p V q.
 - **Move ¬ inwards:** Move negations inwards using de Morgan's law:\
@@ -81,9 +83,3 @@ Let's skolemize the following sentence:\
 
 We want to remove the existential quantifier for y, so we need to swap y with f(x).\
 ∀x[(¬P(x) ∧ Q(x)) ∨ (R(x, f(x)) ∧ T(f(x))))]
-
-## 9.7 Completeness of Resolution
-
-### Rewrite to clausal form
-- Get rid of Ǝ.
-- Rewrite A ⇒ B to ¬A V B

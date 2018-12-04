@@ -12,6 +12,9 @@
 **What is backtrackig search**\
 To limit wasteful tree-searches, an improvement is to insert a test before each successive generation step to check whether any constraint has been violated by the variable assignments made up to this point. If this is thhe case, the resulting algorithm, called **backtracking search**,  then backtracks to try something else.
 
+### Forward checking 
+Forward checking looks ahead to detect unsolvability. Each time a variable is instantiated, forward checking deletes from the domains of the as-yet-uninstantiated variables all of those values that conflict with the variables assigned so far. More generally, forward checking determines the values for every other variable that are consistent with the extended assignment. If any of the domains becomes empty, then the search backtracks immediately. Forward checking often runs far faster than backtracking.
+
 ### Arc-consistency
 **What is arc-consistency**\
 A state is **arc-consistent** if every variable has a value in its domain that is consistent with each of the constraints on that variable. Arc consistency can be achieved by successive deletion of values that are inconsistent with some constraint. As values are deleted, other values may become inconsistent because they relied on the deleted values.

@@ -42,7 +42,7 @@ allergicToCats(Mary)
 Assuming that Mary does not sneeze results in a contradiction. This means that the answer to "Does Mary sneeze?" is **Yes**.
 
 ## 9.6 Conversion to Conjunctive Normal Form
-In Boolean logic, a formula is in **conjunctive normal form** (**CNF**) or **clausal normal form** if it is a conjunction of one or more clauses, where a clause is a disjunction of literals; otherwise put, it is an AND of ORs.
+In Boolean logic, a formula is in **conjunctive normal form** (**CNF**) or **clausal normal form** if it is a conjunction of one or more clauses, where a clause is a disjunction of literals; otherwise put, it is an AND of ORs. All sentences in **first order logic** can be converted into **conjunctive normal form**.
 - **Eliminate implications:** Replace all implications by the corresponding disjunctions.\
 p ⇒ q becomes ¬p V q.
 - **Move ¬ inwards:** Move negations inwards using de Morgan's law:\

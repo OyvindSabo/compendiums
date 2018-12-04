@@ -1,5 +1,12 @@
 # Practical Language Processing
 
+### Information retrieval
+**Information retrieval** is the activity of obtaining information resources relevant to an information need from a collection of information resources. Searches can be based on metadata or on full-text indexing.
+
+### information extraction
+**Information extraction** is the task of automatically extracting structured information from unstructured and/or semi-structured machine-readable documents. In most of the cases this activity concerns processing human language texts by means of natural language processing (NLP). Recent activities in multimedia document processing like automatic annotation and content extraction out of images/audio/video could be seen as information extraction.
+
+### When designing a language...
 When designing a language it is important to try to restrict the **grammar**, as well as **ambiguity**.
 
 ### Distributional hypothesis

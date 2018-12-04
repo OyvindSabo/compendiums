@@ -51,7 +51,7 @@ p ⇒ q becomes ¬p V q.
 ¬∀ x,p becomes Ǝx ¬p\
 ¬Ǝ x,p becomes ∀x ¬p\
 ¬¬p becomes p
-- **Distribute A over V:**  (a ∧ b) V c becomes (a V c) ∧ (b V c).
+- **Distribute ∧ over V:**  (a ∧ b) V c becomes (a V c) ∧ (b V c).
 - **Flatten nested conjunctions and disjunctions:**\
 (a V b) V c becomes (a V b V c)\
 (a A b) ∧ c becomes (a ∧ b ∧ c)

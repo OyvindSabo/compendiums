@@ -8,6 +8,9 @@
 ### Semantic networks
 Just like **frame systems**, **semantic networks** use the metaphor that objects are nodes in a graph, that these nodes are organized in a taxonomic structure, and that links between nodes represent binary relations. In semantic networks, however, the binary relations are thought of as arrows between nodes. In general, though, the term **semantics network** is used to describe both **semantic networks** and **frame systems**. Semantic networks differ in how they handle the case of inheriting multiple different values.
 
+### Procedural attachment
+Semantic networks are very limited in their expressiveness. For example, it is not possible to represent negation (Opus does not ride a bicycle), disjunction (Opus appears in either the Times or the Dispatch), or quantification (all of Opus' friends are cartoon characters). These constructs are essential in many domains. A common approach is to use **procedural attachment**. It retains the limitations on expressiveness and uses procedural attachment to fill in the gaps. Procedural attachment is a technique where a function written in a programming language can be stored as the value of some relation, and used to answer ASK calls about that relation (and sometimes TELL calls as well).
+
 ## 10.2 Indexing, Retrieval and Unification
 
 ### Precision

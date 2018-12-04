@@ -1,5 +1,14 @@
 # Inference in First-Order Logic
 
+## 9.4 Forward and Backward Chaining
+
+### Forward chaining
+Using the Generalized Modus Ponens rule, we can start with the sentences in the knowledge base and generate new conclusions that in turn can allow more inferences to be made. This is called forward chaining. Forward chaining is usually used when a new fact is added to the database and we want to generate its consequences.
+
+### Backward chaining
+If there is something we want to prove, we can start with something we want to prove, find implication sentences that would allow us to conclude it, and then attempt to establish their premises in turn. This is called backward
+chaining, because it uses Modus Ponens backwards.
+
 ## 9.6 Resolution: A Complete Inference Procedure
 
 ### Refutation

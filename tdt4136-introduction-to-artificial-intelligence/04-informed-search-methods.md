@@ -150,7 +150,7 @@ Once a variable has been selected, we still need to choose a value for it. One's
 ## 4.4 Iterative Improvement Algorithms
 
 ### Simulated annealing
-In a regular hill climb, we only take steps which lead to a higher value. **Simulated annealing**, however, is a stochastic optimization method. In simulated annealing, we estimate the probability that any individual step will increase the value, and then decide a step randomly, where the chance of choosing a particular step is proportional to the chance that it increases the value. That way, the function will act somewhat like a hillclimb, but also explore options which don't bring immediate advantage, but which might lead to a higher value in further on.
+In a regular hill climb, we only take steps which lead to a higher value. **Simulated annealing**, however, is a stochastic optimization method. In simulated annealing, we estimate the probability that any individual step will increase the value, and then decide a step randomly, where the chance of choosing a particular step is proportional to the chance that it increases the value. That way, the function will act somewhat like a hillclimb, but also explore options which don't bring immediate advantage, but which might lead to a higher value in further on. Even if simulated annealing can be used to find the global maximum, it's nature is very reminiscent of a local search method, and is therefore classified as such.
 
 ### Min-conflicts heuristics
 In choosing a new value for a variable, the most obvious heuristic is to select the value that results in the minimum number of conflicts with other variables — **the min-conflicts heuristic**.

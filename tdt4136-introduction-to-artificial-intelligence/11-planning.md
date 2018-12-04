@@ -4,10 +4,10 @@
 Planning is a way of problem solving that focuses on the effects of actions. Therefore the Situation Calculus is an important concept when describing a planning problem as it takes the time aspects of facts into account. The Situation Calculus says that facts hold only in situations, not eternally. This means that something can be true in one situation, but may not be true in another situation
 
 ### When is planning necessary
-- When addressing a new situation
-- When tasks are complex
 - When the environment imposes high risk/cost
+- When addressing a new situation
 - When collaborating with others
+- When tasks are complex
 
 ## 11.4 Basic Representations for Planning
 

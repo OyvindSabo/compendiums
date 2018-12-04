@@ -55,3 +55,10 @@ A sentence such as (P ∧ Q) ⇒ R is called an **implication** (or **conditiona
 
 ### What's bad about propositional logic?
 - Propositional logic has very limited expressive power.
+
+### Horn sentences
+A **Horn sentence** (also called **horn clause**) is a disjunction of literals with at most one positive, i.e. unnegated, literal.
+
+A Horn sentence has the form: PI ∧ P2 ∧ ... ∧ Pn ⇒ Q
+
+Not every knowledge base can be written as a collection of Horn sentences

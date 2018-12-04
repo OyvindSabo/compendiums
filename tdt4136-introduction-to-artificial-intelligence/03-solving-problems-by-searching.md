@@ -1,5 +1,10 @@
 # 3 Solving problems by searching
 
+## 3.5 Search Strategies
+
+### Iterative deepening
+rative deepening search is a strategy that sidesteps the issue of choosing the best depth limit by trying all possible depth limits: first depth 0, then depth 1, then depth 2, and so on. Iterative deepening combines the benefits of depth-first and breadth-first search. It is optimal and complete, like breadth-first search, but has only the modest memory requirements of depth-first search. The order of expansion of states is similar to breadth-first, except that some states are expanded multiple times. Iterative deepening search may seem wasteful, because so many states are expanded multiple times. For most problems, however, the overhead of this multiple expansion is actually rather small. Intuitively, the reason is that in an exponential search tree, almost all of the nodes are in the bottom level, so it does not matter much that the upper levels are expanded multiple times. Iterative deepening search is optimal if step-costs is a constant, the search-space is finite and a goal exists.
+
 ## 3.7 Constraint Satisfaction Search
 
 ### Terms

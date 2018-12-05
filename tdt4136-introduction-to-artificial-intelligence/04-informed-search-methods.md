@@ -6,7 +6,7 @@ Estimated remaining cost to the total goal: h(n)\
 Cost of the path so far: g(n)
 
 ### Greedy best-first search
-A best-first search that uses **h** to select the next node to expand is called **greedy best-first search**. The strategy prefers to take the biggest bite possible out of the remaining cost to reach the goal, without worrying about whether this will be best in the long run—hence the name "greedy search." Ggreedy algorithms often perform quite well. They tend to find solutions quickly, although they do not always find the optimal solutions.
+A best-first search that uses **h** to select the next node to expand is called **greedy best-first search**. The strategy prefers to take the biggest bite possible out of the remaining cost to reach the goal, without worrying about whether this will be best in the long run—hence the name "greedy search." Greedy algorithms often perform quite well. They tend to find solutions quickly, although they do not always find the optimal solutions.
 
 ### Uniform cost search
 Uniform cost search modifies the breadth-first strategy by always expanding the lowest-cost node on the fringe (as measured by the path cost g(n)). Uniform cost search is a special case of **A\* search**.

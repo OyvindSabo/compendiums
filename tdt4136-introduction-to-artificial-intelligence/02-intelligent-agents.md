@@ -26,7 +26,7 @@ Let's categorize Backgammon using the properties of environment.
 
 In backgammon, the whole state of the current board is observable. The opponent does not have information which is hidden from the current player. Therefore, the state is **accessible**.
 
-In backgammon, the moves a player is allowed to make are dependent on the throw of two dices. That means that for any given move, the state in which the next move will not solely depend on the decision made in this move. Therefore, the game state is **non-deterministic**.
+In backgammon, the moves a player is allowed to make are dependent on the throw of two dices. That means that for any given move, the state of the next move will not solely depend on the decision made in this move. Therefore, the game state is **non-deterministic**.
 
 In backgammon, only the current state of the game has to be considered. It doesn't matter what actions lead to the current state. In other words, backgammon is **episodic**.
 

@@ -9,7 +9,7 @@ Alan Newel and Herbert Simon suggested that any **physical symbol system** has n
 
 Although many, including Jefferson, have claimed that thinking necessarily involves consciousness, the issue is most commonly associated with the work of the philosopher John Searle.
 
-## 1.2 The FOundation of Artificial Intelligence
+## 1.2 The Foundation of Artificial Intelligence
 
 ### Decidability
 In logic, a true/false decision problem is decidable if there exists an effective method for deriving the correct answer (instead of looping indefinitely, crashing, returning "don't know", or returning a wrong answer).

@@ -14,7 +14,7 @@
 
 ### Backtracking search
 **What is backtrackig search**\
-To limit wasteful tree-searches, an improvement is to insert a test before each successive generation step to check whether any constraint has been violated by the variable assignments made up to this point. If this is thhe case, the resulting algorithm, called **backtracking search**,  then backtracks to try something else.\
+To limit wasteful tree-searches, an improvement is to insert a test before each successive generation step to check whether any constraint has been violated by the variable assignments made up to this point. If this is the case, the resulting algorithm, called **backtracking search**,  then backtracks to try something else.\
 ![backtrack.gif](https://cdn.steemitimages.com/DQmdqKvX1hcmosKA1RtA47gJqmRTHqtCbbA5mKcseXyWh1R/backtrack.gif)
 
 ### Forward checking 

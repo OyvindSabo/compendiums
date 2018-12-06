@@ -31,3 +31,11 @@ It means that the future prie, properly discounted, is equal to the current pric
 - **Weak form** market efficiency occurs when all past price histories are fully reflected in the current prices.
 - **Semi-strong form** market efficiency occurs when all publicly available information, as well as all price histories are reflected in the current price.
 - **Strong form** market efficiency occurs if all information, including inside information is included in the current price.
+
+### 4.1.3 Empirical implications
+
+**Underreaction**\
+When new information becomes available, if the market does not immediately adjust to reflect the new information, then it means that the market is underreacting. An **underreacting** market is not efficient, and can be exploited by traders, but by doing so, they effectively make the market more efficient.
+
+**Overreaction**\
+A market is said to be **overreacting** if the price adjustment overestimates the change in expected value after new information becomes available. If for instance, the the new information would imply a 10% drop, the actual price may drop 20%, and then readjust to reflect the expected value after some time. Just like underreactions, overreactions can be exploited by traders. By doing so, they make the market more efficient.

@@ -12,3 +12,14 @@ The return that the market offers on investments with the same risk characterist
 
 **Finanacial risk**\
 The additional risk that equity holders accept by giving debtholders a higher priority claim on the firm's cash flows is called **financial risk**.
+
+**OCC**\
+Opportunity cost of capital
+
+**WACC**\
+Weighted average cost of capital after tax.\
+**r = r<sub>a</sub> = OCC**\
+**r<sub>d</sub> = cost of debt**\
+r<sub>e</sub> = cost of equity
+
+**WACC = r<sub>e</sub><sup>E</sup>/<sub>V</sub>+r<sub>d</sub>(1-τ)<sup>D</sup>/<sub>V</sub>**

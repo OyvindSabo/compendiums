@@ -23,3 +23,39 @@ Weighted average cost of capital after tax.\
 r<sub>e</sub> = cost of equity
 
 **WACC = r<sub>e</sub><sup>E</sup>/<sub>V</sub>+r<sub>d</sub>(1-τ)<sup>D</sup>/<sub>V</sub>**
+
+**Example**\
+Current operations:
+- Finaced by equity (€500 million) and bank loan (€500 million).
+- The loan is constantly renegotiated to keep the proportions of debt and equity constant.
+- The company pays 7% interest on the loan.
+- Equity consists of 15 million shares which were sold in an IPO 10 years ago.
+- Current share price: €50
+- Volatility of shares: 25%
+- β coefficient of shares: 1.5
+- Market risk premium of shares: 8%
+- Risk free interest rate: 4%
+- Corporate tax rate: 30%
+
+New project:
+- New project requires immediate investment of €65 million.
+- Expected to produce perpetual annual cash flow of $7.5 million, beginning after one year.
+- Bank will provide a loan of 20% of the investment amount.
+- The loan will have a 6% interest rate.
+- The company will provide the rest of the investment amount as equity from its retained earnings.
+
+Should the company do the new project?
+
+First, let's find the market value of the company. We already know that the book value is €500, but we should use the actual market value whenever we can:
+
+**equity = 15 million shares * €50/share = 750 million**
+
+Then, let's find the total financing:
+
+**total financing = €750 million (equity) + €500 million (debt) = €1250 million**
+
+Let's find out how much of the total financing is equity:
+
+**equity fraction = €750 million / €1250 million = 60%
+
+LEt's find the 

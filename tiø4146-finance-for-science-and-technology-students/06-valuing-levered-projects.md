@@ -56,6 +56,11 @@ Then, let's find the total financing:
 
 Let's find out how much of the total financing is equity:
 
-**equity fraction = €750 million / €1250 million = 60%
+**equity fraction = €750 million / €1250 million = 60%**
 
-LEt's find the 
+Let's find the expected return using CAPM:
+
+Risk-free rate **r<sub>f</sub>** = 4% = 0.04\
+
+
+**E(r<sub>i</sub>) = r<sub>f</sub> + (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>i</sub>**

@@ -14,7 +14,7 @@ The return that the market offers on investments with the same risk characterist
 The additional risk that equity holders accept by giving debtholders a higher priority claim on the firm's cash flows is called **financial risk**.
 
 **OCC**\
-Opportunity cost of capital
+**Opportunity cost of capital** (**OCC**) is the rate of return that could have been earned by putting the same money into a different investment with equal risk. Thus, the cost of capital is the rate of return required to persuade the investor to make a given investment.
 
 **WACC**\
 Weighted average cost of capital after tax.\
@@ -60,7 +60,22 @@ Let's find out how much of the total financing is equity:
 
 Let's find the expected return using CAPM:
 
-Risk-free rate **r<sub>f</sub>** = 4% = 0.04\
+Risk-free rate **r<sub>f</sub>** = 4% = **0.04**\
+Risk **β<sub>i</sub>** = **1.5**\
+Price of risk **E(r<sub>m</sub>) - r<sub>f</sub>** = market risk premium = 8% = **0.08**
 
+**E(r<sub>i</sub>) = r<sub>f</sub> + (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>i</sub>**\
+**E(r<sub>i</sub>) = 0.04 + 0.08 * 1.5**\
+**Expected return = E(r<sub>i</sub>) = 0.16 = 16%**
 
-**E(r<sub>i</sub>) = r<sub>f</sub> + (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>i</sub>**
+Next, let's find the opportunity cost of capital (OCC):
+
+**r<sub>a</sub> = 0.07 * <sup>€500 million</sup>/<sub>€1250 million</sub> + 0.16 * <sup>€750 million</sup>/<sub>€1250 million</sub> = 0.124 = 12.4%**
+
+Now that we have the OCC; let's find the present value of the new project's cash flow:
+
+**<sup>€7.5 million</sup>/<sub>0.124</sub> = €60.48 million**
+
+The present value of the expected return is €60.48 million, but the investment is €65 million. This implies a loss of **€60.48 million - €65 million = €-4.52 million**
+
+The new project will lead to a loss of €4.52 million, so it should be rejected.

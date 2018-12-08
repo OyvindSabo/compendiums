@@ -13,3 +13,5 @@ The **cost of bankruptcy**, (also called **cost of financial distress**) is the 
 - Investors may require costly refinancing.
 - Non-strategic assets may ahve to be sold at emergency prices.
 - Risk-reducing financial instruments may no longer be available from banks.
+
+A policy of renting offices or leasing equipment reduces the amount banks are willing to lend. This is because rented offices and leased equipment offer no security for loans. Owned buildings and equipment, however, can serve as collateral and can be taken and sold by the bank in case of an emergency. Owning assets, give lower **bankruptcy costs**, and therefore an optimal capital structure with more debt.

@@ -18,3 +18,6 @@ The **exercise price** (also called **strike price**) is the specified price at 
 
 **Option premium**\
 The **option premium** is the price that you pay when buying an option, or that you receive when selling an option.
+
+**Exercise**\
+To **exercise** an option is to buy utilize the right an option gives to buy or sell something.

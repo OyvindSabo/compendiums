@@ -39,3 +39,8 @@ When new information becomes available, if the market does not immediately adjus
 
 **Overreaction**\
 A market is said to be **overreacting** if the price adjustment overestimates the change in expected value after new information becomes available. If for instance, the the new information would imply a 10% drop, the actual price may drop 20%, and then readjust to reflect the expected value after some time. Just like underreactions, overreactions can be exploited by traders. By doing so, they make the market more efficient.
+
+### 4.2.5 Event studies
+
+**Event studies**\
+**Event studies are designed to answer whether price development follows developments on the market, or if it contradicts the **efficient market hypothesis**.

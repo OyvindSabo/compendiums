@@ -1,5 +1,13 @@
 # Capital structure and dividends
 
+## 5.1 Dimensions of securities
+
+- Riskiness: The return dimension
+- Maturity: The time dimension
+
+**Secured debt**\
+To **secure** debt is to make it less risky for the lender. For instance, a mortgage loan is secured by the value of the real estate for which the loan was provided-
+
 ## 5.3 Models of optimal capital structure
 
 ### 5.3.1 The trade-off theory

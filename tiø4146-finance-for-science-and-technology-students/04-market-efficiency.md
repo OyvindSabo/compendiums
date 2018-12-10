@@ -43,10 +43,21 @@ A market is said to be **overreacting** if the price adjustment overestimates th
 ### 4.2.5 Event studies
 
 **Event studies**\
-**Event studies** measure the effect of a well-defined event on firm value. **Event studies are designed to answer whether price development follows developments on the market, or if it contradicts the **efficient market hypothesis**.
+**Event studies** measure the effect of a well-defined event on firm value. **Event studies** are designed to answer whether price development follows developments on the market, or if it contradicts the **efficient market hypothesis**.
 
 **Market model**\
 The **market model** is a model used to filter out the continuous stream of other, more general financial information about interest and exchange rates, prices of other stocks bonds and commoditie as well as mactro-economic information. The model calculates the **normal return** which could be expected if it wasn't for the event which is being studied.
 
+**r<sub>it</sub>** = return of an individual index.\
+**r<sub>mt</sub>** = return of the market as a whole.\
+**γ<sub>0,1</sub>** = estimated coefficients.\
+**ε<sub>it</sub>** = an error term.\
+**t** = time
+
+**r<sub>it</sub> = γ<sub>0i</sub> + γ<sub>1i</sub>r<sub>mt</sub> + ε<sub>it</sub>**
+
 **Abnormal return**\
 The **abnormal return** is the difference between the **realized return** and the **normal return**. The **abnormal return** is the part of the return which is attributed to the event.
+
+**Event window**\
+The **event window** is the period over which we want to analyze the impact of an event.

@@ -59,11 +59,17 @@ The **market model** is a model used to filter out the continuous stream of othe
 **Abnormal return**\
 The **abnormal return** is the difference between the actual return (**realized return**) and the return according to the market model (**normal return**). The **abnormal return** is the part of the return which is attributed to the event.
 
+**Calculate Abnormal return: Mean-adjusted returns model**\
+The **mean-adjusted returns model** (**MAR**) calculates **abnormal return** (**AR**) by simply looking at the difference between the return on a stock a particular day, and the average return on that stock.
+
+**Calculate abnormal return: Market-adjusted returns model**\
+The **market-adjusted returns model** (**MKAR**) calculates **abnormal return** (**AR**) by taking the difference between the return on a stock on a particular day and the corresponding return on a stock market index.
+
 **Event window**\
 The **event window** is the period over which we want to analyze the impact of an event. If we continue to observe significant abnormal returns after the event window, then we have to question the validity of the semi-strong form efficient market hypothesis with respect to the particular event. Also, if we see abnormal return within the event window before the actual event occured, then that is a sign of insider trading.
 
 **Estimation window**\
-The **estimation window** is the period over which we estimate the market model.
+The **estimation window** is the period over which we estimate the market model. This is where we find the **normal return** (the average return of a particular stock).
 
 **CAAR**\
 **Cumulative average abnormal return** (**CAAR**) are calculated like this:

@@ -61,3 +61,6 @@ The **abnormal return** is the difference between the **realized return** and th
 
 **Event window**\
 The **event window** is the period over which we want to analyze the impact of an event.
+
+**Estimation window**\
+The **estimation window** is the period over which we estimate the market model.

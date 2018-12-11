@@ -25,7 +25,7 @@ To **write** an option is to sell an option. The writer of a sell option is obli
 **Option premium**\
 The **option premium** is the price that you pay when buying an option, or that you receive when selling an option. An option seller (**writer**) cannot expect to earn any money when an option is exercised. The writer is compensated for the expected loss in the **option premium**.
 
-**Example**
+**Example without using any option pricing model**
 - You own 1000 shares of a stock.
 - The stock is currently trading at €100 per share.
 - You bought the stock at €60.
@@ -46,3 +46,5 @@ If we assume that we find a put option which gives the right to sell at the curr
 **option premium ≤ €10 000**
 
 This means that for you, an option to sell at the current price in six months is worth €10 000 in option premium.
+
+**Example of evaluating an option using a model**

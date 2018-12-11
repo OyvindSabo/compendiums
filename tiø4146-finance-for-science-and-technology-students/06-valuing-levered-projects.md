@@ -16,15 +16,29 @@ The additional risk that equity holders accept by giving debtholders a higher pr
 **OCC**\
 **Opportunity cost of capital** (**OCC**) is the rate of return that could have been earned by putting the same money into a different investment with equal risk. Thus, the cost of capital is the rate of return required to persuade the investor to make a given investment.
 
+r<sub>e</sub> = return of equity\
+r<sub>d</sub> = return of debt\
+β<sub>e</sub> = equity β\
+β<sub>d</sub> = debth β\
+V = value\
+τ = corporate tax rate
+
+**r = r<sub>a</sub> = r<sub>d</sub>(1 - τ) * <sup>D</sup>/<sub>(V - τD)</sub> + r<sub>e</sub> * <sup>E</sup>/<sub>(V - τD)</sub>**\
+or\
+**β = r<sub>a</sub> = β<sub>d</sub>(1 - τ) * <sup>D</sup>/<sub>(V - τD)</sub> + β<sub>e</sub> * <sup>E</sup>/<sub>(V - τD)</sub>**
+
 **WACC**\
 Weighted average cost of capital after tax.\
-**r = r<sub>a</sub> = OCC**\
-**r<sub>d</sub> = cost of debt**\
-r<sub>e</sub> = cost of equity
+r = r<sub>a</sub> = OCC\
+r<sub>d</sub> = cost of debt\
+r<sub>e</sub> = cost of equity\
+τ = corporate tax rate
 
-**WACC = r<sub>e</sub><sup>E</sup>/<sub>V</sub>+r<sub>d</sub>(1-τ)<sup>D</sup>/<sub>V</sub>**
+**WACC = r<sub>e</sub><sup>E</sup>/<sub>V</sub>+r<sub>d</sub>(1-τ)<sup>D</sup>/<sub>V</sub>**\
+or\
+**WACC = r' = r<sub>a</sub>(1-τL)**
 
-**Example**\
+**Example 1**\
 Current operations:
 - Finaced by equity (€500 million) and bank loan (€500 million).
 - The loan is constantly renegotiated to keep the proportions of debt and equity constant.
@@ -58,7 +72,7 @@ Let's find out how much of the total financing is equity:
 
 **equity fraction = €750 million / €1250 million = 60%**
 
-Let's find the expected return using CAPM:
+Let's find the expected return using **CAPM**:
 
 Risk-free rate **r<sub>f</sub>** = 4% = **0.04**\
 Risk **β<sub>i</sub>** = **1.5**\
@@ -79,3 +93,81 @@ Now that we have the OCC; let's find the present value of the new project's cash
 The present value of the expected return is €60.48 million, but the investment is €65 million. This implies a loss of **€60.48 million - €65 million = €-4.52 million**
 
 The new project will lead to a loss of €4.52 million, so it should be rejected.
+
+**Example 2**
+Current operations:
+- 80% financed with debt.
+- Equity β<sub>e</sub> of 3.5.
+- The company pays 5% interest on its debt.
+- The market value of the debt is €1280 million.
+- The company has 80 million outstanding shares.
+- Each share is worth €4.
+- The risk free interest rate is 4%.
+- The return of the relevant market portfolio is 8.5%.
+- The corporate tax rate is 30%.
+
+New proect:
+- Immediate investment of €120 million.
+- Expected to produce a perpetual annual after tax cash flow of €10 million after one year.
+- The bank will give a mortgage of €60 million.
+- The loan rent will be reduced to 4.5%.
+
+Let's find out if the company should invest in the new project.
+
+**First, let's find the market vaue of the company:**
+
+debt = €1280 millon\
+equity = 80 million shares * €4 per share = €320 million\
+total financing = €320 million (equity) + €1280 million (debt) = €1600 million
+
+**We already know β<sub>e</sub> = 3.5, but we need to find β<sub>d</sub> as well. We do this using the CAPM model:**
+
+Risk-free rate = r<sub>f</sub> = 4% = 0.04\
+Price of the risk (market risk premium) = E(r<sub>m</sub>) = 8.5% = 0.085\
+Risk of debt = β<sub>d</sub> = ?\
+Expected return on debt = E(r<sub>d</sub>) = 5% = 0.05
+
+E(r<sub>i</sub>) = r<sub>f</sub> + (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>i</sub>\
+E(r<sub>i</sub>) - r<sub>f</sub> = (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>i</sub>\
+β<sub>d</sub> = <sup>(E(r<sub>i</sub>) - r<sub>f</sub>)</sup>/<sub>(E(r<sub>m</sub>) - r<sub>f</sub>)</sub>**\
+β<sub>d</sub> = <sup>(0.05 - 0.04)</sup>/<sub>(0.085 - 0.04)</sub> = 0.222
+
+**Next, let's find β<sub>a</sub>:**
+
+β<sub>e</sub> = return of equity = 3.5\
+β<sub>d</sub> = return of debt = 0.222\
+τ = corporate tax rate = 30% = 0.3\
+D = debt ratio = 80% = 0.8\
+E = equity ratio = 20% = 0.2\
+V = value ratio = 1\
+
+**β<sub>a</sub> = β<sub>d</sub>(1 - τ) * <sup>D</sup>/<sub>(V - τD)</sub> + β<sub>e</sub> * <sup>E</sup>/<sub>(V - τD)</sub>**\
+**β<sub>a</sub> = 0.222 * (1 - 0.3) * <sup>0.8</sup>/<sub>(1 - 0.3 * 0.8)</sub> + 3.5 * <sup>0.2</sup>/<sub>(1 - 0.3 * 0.8)</sub>**\
+**β<sub>a</sub> = 1.0846**
+
+**Now that we have β<sub>a</sub> we can use the CAPM model to find the expected return:**
+
+Risk-free rate = r<sub>f</sub> = 4% = 0.04\
+Price of the risk (market risk premium) = E(r<sub>m</sub>) = 8.5% = 0.085\
+Risk = β<sub>a</sub> = 1.0846\
+
+E(r<sub>a</sub>) = r<sub>f</sub> + (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>a</sub>\
+E(r<sub>a</sub>) = 0.04 + (0.085 - 0.04) * 1.0846 = 0.0888
+
+**Now that we know the estimated return for the current prject, let's use the WACC model to calculate the weighted average cost of capital after tax:**
+
+**Let's find the net present value of the product by unlevering it:**\
+NPV = €10 million/0.0888 - €120 million = €-7.39 million
+
+**It appears that the company should not go ahead with the project, but we have to remember that the bank will reduce the loan interest if the company goes ahead with the project.**
+
+τ = corporate tax rate = 3% = 0.3\
+D = debt ratio = 0.5\
+debt = €120 million
+
+tax advantage = 0.3 * 0.5 * €120 million = 18 million
+
+**Implementing this in our NPV calculations yields:**\
+NPV = €10 million/0.0888 - €120 million + 0.3 * 0.5 * €120 million = €10.61 million
+
+**Since the project has a positive net present value, the company should go ahead with the project.**

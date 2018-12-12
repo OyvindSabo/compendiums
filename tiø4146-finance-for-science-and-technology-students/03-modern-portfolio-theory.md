@@ -6,6 +6,6 @@ The **Capital Asset Pricing Model** (**CAPM**) is a pricing relation for all ris
 **E(r<sub>i</sub>) = r<sub>f</sub> + (E(r<sub>m</sub>) - r<sub>f</sub>)β<sub>i</sub>**
 
 **Jensen's alpha**\
-**Jensen's alpha** is a performance measure which is directly based on the **CAPM**. It measures the return of a portfolio in excess of what the **CAPM** specifies. Since Jensen's alpha uses **CAPM** as a benchmark, it is very easy to interpret. A major disadvavntage, though, is that alphas are different to compare between portfolios with different risk.
+**Jensen's alpha** is used to calculate the return on a portfolio in excess of its theoretical expected return. The theoretical expected return is based on a market model, usually the **Capital Asset Pricing Model** (**CAPM**). Since Jensen's alpha uses **CAPM** as a benchmark, it is very easy to interpret. A major disadvantage, though, is that alphas are different to compare between portfolios with different risk.
 
 **α<sub>p</sub> = r̄<sub>p</sub> - (r̄<sub>f</sub> + B̂<sub>p</sub>(r̄<sub>m</sub> - r̄<sub>f</sub>))**

@@ -15,17 +15,19 @@ If the available information set is fully reflected in the expected price, then 
 
 If one could be sure the price would rise, it would have already risen.
 
+Note that significant underperformance does not contradict the efficient market hypothesis, but significant overperformance does.
+
 **Fair game model**\
 The **fair game model** directly specifies the expectation of the excess returns ε<sub>i,t+1</sub> regardless of the model being used to produce expected prices or returns:\
 **E[ε<sub>i,t+1</sub> | Φ<sub>t</sub>] = 0**
 
-**Martingale model**
+**Martingale model**\
 The **martingale model** specifies the expectation of excess returns by modeling the time series properties of returns or prices. The expected future price must be the present price times the expected return:\
 **E[P<sub>i,t+1</sub> | Φ<sub>t</sub>] = P<sub>i,t+1</sub>(1 + E[r<sub>i,t+1</sub> | Φ<sub>t</sub>])**\
 It means that the future prie, properly discounted, is equal to the current price, which makes it a **martingale**.
 
 **Random walk model**\
-**Random walks** have the **markov property** of **memorylessness**. THis means that past returns and patterns in past returns cannot be used to predict patterns in future returns. The **random walk model** requires the expected return to be constant and the excess return to be zero, and have constant variance and higher moments in each future period. The expected return of a random walk is called the **drift*.
+**Random walks** have the **markov property** of **memorylessness**. This means that past returns and patterns in past returns cannot be used to predict patterns in future returns. The **random walk model** requires the expected return to be constant and the excess return to be zero, and have constant variance and higher moments in each future period. The expected return of a random walk is called the **drift*.
 
 **The three effiecient market categories**
 - **Weak form** market efficiency occurs when all past price histories are fully reflected in the current prices.

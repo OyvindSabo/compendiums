@@ -11,7 +11,7 @@ To **secure** debt is to make it less risky for the lender. For instance, a mort
 ## 5.3 Models of optimal capital structure
 
 ### 5.3.1 The trade-off theory
-**The trade-off theory** models the cost of fnancial distress as a broad leverage-related cost category against which the tax advantage of debt is traded off.
+**The trade-off theory** models the cost of fnancial distress as a broad leverage-related cost category against which the tax advantage of debt is traded off. If we ignore the cost of fainancial distress, any company would benefit from being funded 100% from debt, as long as the debt interest is lower than the tax rate. In practice, though, there is a cost to living on the edge, and this is where trade-off theory comes into play.
 
 **Cost of bankruptcy**\
 The **cost of bankruptcy**, (also called **cost of financial distress**) is the costs that have to be incurred if debt is too high.
@@ -29,3 +29,5 @@ A policy of renting offices or leasing equipment reduces the amount banks are wi
 - Leverage decreases with earnings volatility because companies with olatile earnings need to reduce the risk that new equity has to be issued or that profitable investment opportunities have to be forgone.
 - Having a high tax rate will lead to higher optimal debt rate.
 - Debt decreases with the value of growth opportunities.
+
+According to trade-off theory, all changes in capital structure should be in direction of the optimum.

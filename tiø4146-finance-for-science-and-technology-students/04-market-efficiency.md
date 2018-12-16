@@ -98,6 +98,9 @@ The CAAR is a useful statistical analysis in addition to the AAR because it
 helps us get a sense of the aggregate effect of the abnormal returns. Particularly if the influence of the event during the event window is not
 exclusively on the event date itself, the CAAR can prove very useful.
 
+**Sample selection bias**\
+**Sample selection bias** is a type of bias caused by choosing non-random data for statistical analysis. The bias exists due to a flaw in the sample selection process, where a subset of the data is systematically excluded due to a particular attribute. The exclusion of the subset can influence the statistical significance of the test, or produce distorted results.
+
 **Example of event study**\
 Given a table of studies of 113 individual public events, each affecting their respective companies...
 |                             | All companies | Resource companies | Non-resource companies |

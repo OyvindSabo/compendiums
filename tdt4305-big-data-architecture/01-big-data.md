@@ -26,3 +26,10 @@ Velocity refers to the speed of data processing. Data velocity can be categorize
 | High      | TB     | Photo, web, audio                   | Near real time |
 | Very high | PB     | Social, video, unstructured, mobile | Real time      |
 
+## Some other Vs
+
+**Veracity**\
+Veracity refers to how accurate and applicable the data is.
+
+**Value**\
+Value refers to the worth of the data being extracted. Having endless amounts of data is useless unless it can be turned into value.

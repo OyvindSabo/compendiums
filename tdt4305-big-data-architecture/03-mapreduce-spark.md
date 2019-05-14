@@ -47,3 +47,55 @@ Let's assume that the RDD is stored in the variable `tuples`.
 ```python
 tuples.reduceByKey(lambda a, b: max(a, b))
 ```
+
+## More examples
+Assume a file countries.tsv (tsv = tab separated) which contains information about countries and
+characteristic terms for these countries (in this case, you can assume one tab "\t" per line,
+between country and the term list):
+
+France    wine,art,trains,wine,trains
+Canada    glaciers,lakes,hockey,maple,grizzly
+Norway    fjords,fjords,glaciers,trolls
+Japan     trains,sushi,origami,sushi,fuji
+Argentina wine,glaciers,football,glaciers
+
+You are now, for each of the problems below, to show how they can be solved using Spark
+transformations /actions (Scala, Python, or Java).
+Hint: Split a text string x based on "\t" (tab): val y = x.split("\t")
+
+**a) Create an RDD with name ”data” based on the file, where each record/object is a text string
+(String) containing one line from the file.**\
+data = sc.textFile("countries.tsv")
+
+**b) Create a new RDD ”data2” where each object in ”data” is an ”array/list of strings”, where the
+first text string is country and text string number two contains the terms. Example result (Py-
+thon):
+[['France', 'wine,art,trains,wine,trains'],
+['Canada', 'glaciers,lakes,hockey,maple,grizzly'],
+['Norway', 'fjords,fjords,glaciers,trolls'],
+['Japan', 'trains,sushi,origami,sushi,fuji'],
+['Argentina', 'wine,glaciers,football,glaciers']]**\
+data2 = sc.textFile("countries.tsv").map(lambda line: line.split("\t"))
+
+
+**c) Create a new pair RDD ”data3” where (key is country, and value is an “array/list of strings”
+of characteristic terms, example result:
+[('France', ['wine', 'art', 'trains', 'wine', 'trains']),
+('Canada', ['glaciers', 'lakes', 'hockey', 'maple', 'grizzly']),
+('Norway', ['fjords', 'fjords', 'glaciers', 'trolls']),
+('Japan', ['trains', 'sushi', 'origami', 'sushi', 'fuji']),
+('Argentina', ['wine', 'glaciers', 'football', 'glaciers'])]**\
+data3 = sc.textFile("countries.tsv).map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(",")))
+
+
+**d) Find number of characteristic terms in the dataset (not including name of the countries).**\
+data4 = sc.textFile("countries.tsv).map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(","))).flatMapValues(lambda value: value).count()
+
+**e) Find the number of distinct characteristic terms in the dataset.**\
+data5 = sc.textFile("countries.tsv).map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(","))).flatMapValues(lambda value: value).distinct().count()
+
+**f) Based on ”data3”, create an RDD that contains number of distinct terms for each country.
+Example result:
+[('Argentina', 3), ('Norway', 3), ('France', 3), ('Canada', 5), ('Ja
+pan', 4)]**\
+data3.map(lambda line: (line[0], len(list(dict.fromkeys(line[1])))))

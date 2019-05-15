@@ -49,3 +49,16 @@ Sharding can be done manually by for example deciding that all data connected to
 HBase uses a concept called **auto sharding**, which simply means that tables are dynamically distributed by the system to different region servers when they become too large. A region is a contiguous range of rows stored together. In HBase, the regions will be dynamically split depending to regulate the size of each region.
 
 Each region is served by one and only one region server. Initially all data is stored in one region. When it becomes to large, it is split into two more or less equal parts.
+
+## The CAP Theorem
+
+The **CAP theorem**, also named Brewer's theorem after computer scientist Eric Brewer, states that it is impossible for a distributed data store to simultaneously provide more than two out of the following three guarantees:
+
+**Consistency:**\
+All the servers in the system will have the same data so anyone using the system will get the same copy regardless of which server answers their request
+
+**Availability:**\
+The system will always respond to a request (even if it's not the latest data or consistent across the system or just a message saying the system isn't working)
+
+**Partition tolerance:**\
+The system continues to operate as a whole even if individual servers fail or can't be reached.

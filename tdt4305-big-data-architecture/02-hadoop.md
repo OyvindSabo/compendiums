@@ -103,4 +103,7 @@ Output: list(key, value)
 - Hadoop allows for multiple redundant copies of the NameNode, so there is no single point of failure. In previous Hadoop versions, each cluster only ha one name node, and if it failed, it had to be restarted. That being said, the NameNode is able to recreate the system image from the DataNodes.
 
 ## MapReduce combiner
-The task of the combiner is to take the output list from the mapper and combine all the tuples with common keys, so that the reducer can reduce based on key.
+The task of the combiner is to take the output list from the mapper and combine all the tuples with common keys, so that the reducer can reduce based on key. This means that the reducer can assume that it will not get duplicate keys from a single mapper. This reduces network congestion.
+
+## The purpose of data pipelines in HDFS
+In HDFS, when the client sends data to a DataNode, even if the data has to be sent to multiple different DataNodes for replication, the data only has to be sent to a single DataNode. When this DataNode starts receiving the data, the packets are received by the DataStreamer which is responsible for communicating with the NameNode to find out in what DataNodes the blocks should be replicated. While the client is still transferring data blocks to the DataNode, the DataNode can simultaneoulsy forwarding the data to the other DataNodes which will receive the replica data blocks. Data bblocks are by the way the smallest piece which defines the granularity of HDFS.

@@ -63,9 +63,10 @@ You are now, for each of the problems below, to show how they can be solved usin
 transformations /actions (Scala, Python, or Java).
 Hint: Split a text string x based on "\t" (tab): val y = x.split("\t")
 
-**a) Create an RDD with name ”data” based on the file, where each record/object is a text string
-(String) containing one line from the file.**\
+**a) Create an RDD with name ”data” based on the file, where each record/object is a text string (String) containing one line from the file.**
+```python
 data = sc.textFile("countries.tsv")
+```
 
 **b) Create a new RDD ”data2” where each object in ”data” is an ”array/list of strings”, where the
 first text string is country and text string number two contains the terms. Example result (Py-
@@ -74,8 +75,10 @@ thon):
 ['Canada', 'glaciers,lakes,hockey,maple,grizzly'],
 ['Norway', 'fjords,fjords,glaciers,trolls'],
 ['Japan', 'trains,sushi,origami,sushi,fuji'],
-['Argentina', 'wine,glaciers,football,glaciers']]**\
+['Argentina', 'wine,glaciers,football,glaciers']]**
+```python
 data2 = sc.textFile("countries.tsv").map(lambda line: line.split("\t"))
+```
 
 
 **c) Create a new pair RDD ”data3” where (key is country, and value is an “array/list of strings”
@@ -84,18 +87,66 @@ of characteristic terms, example result:
 ('Canada', ['glaciers', 'lakes', 'hockey', 'maple', 'grizzly']),
 ('Norway', ['fjords', 'fjords', 'glaciers', 'trolls']),
 ('Japan', ['trains', 'sushi', 'origami', 'sushi', 'fuji']),
-('Argentina', ['wine', 'glaciers', 'football', 'glaciers'])]**\
-data3 = sc.textFile("countries.tsv).map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(",")))
+('Argentina', ['wine', 'glaciers', 'football', 'glaciers'])]**
+```python
+data3 = sc.textFile("countries.tsv").map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(",")))
+```
 
 
-**d) Find number of characteristic terms in the dataset (not including name of the countries).**\
+**d) Find number of characteristic terms in the dataset (not including name of the countries).**
+```python
 data4 = sc.textFile("countries.tsv).map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(","))).flatMapValues(lambda value: value).count()
+```
 
-**e) Find the number of distinct characteristic terms in the dataset.**\
+**e) Find the number of distinct characteristic terms in the dataset.**
+```python
 data5 = sc.textFile("countries.tsv).map(lambda line: line.split("\t")).map(lambda line: (line[0], line[1].split(","))).flatMapValues(lambda value: value).distinct().count()
+```
 
 **f) Based on ”data3”, create an RDD that contains number of distinct terms for each country.
 Example result:
 [('Argentina', 3), ('Norway', 3), ('France', 3), ('Canada', 5), ('Ja
-pan', 4)]**\
+pan', 4)]**
+```python
 data3.map(lambda line: (line[0], len(list(dict.fromkeys(line[1])))))
+```
+
+## Even more examples
+For each song streamed, a line will be generated in the log, in the following format (comma separated): TimeStamp,UserName,Artist,SongName
+
+Assume the following example dataset stored in the file streamed.csv:\
+1,u1,a1,s1\
+2,u2,a1,s2\
+3,u1,a1,s2\
+4,u3,a1,s1\
+5,u1,a2,s3\
+6,u2,a1,s2\
+7,u2,a1,s2\
+8,u2,a1,s2\
+
+This dataset has already been loaded into an RDD named s:
+```python
+val s = sc.textFile("streamed.csv").map(_.split(","))
+```
+
+**Create an RDD containing number of songs streamed for each artist. Example results:**\
+(a2,1)\
+(a1,7)
+
+```python
+s.map(lambda line: line[2]).reduceByKey(lambda a, b: a + b)
+```
+
+**Create an RDD that for each line has name of user and number of song he/she has streamed. Example results:**\
+u3 1\
+u2 4\
+u1 3
+```python
+s.map(lambda line: line[1]).reduceByKey(lambda a, b: a + b)
+```
+
+**Find number of distinct songs that have been played. Example results:**\
+3
+```
+s.flatMapValues(lambda line: line[3]).distinct().count()
+```

@@ -8,6 +8,18 @@
 **Cache systems:** [Redis, Memcache]\
 **Graph databases:** [Neo4J]
 
+**Document databases**\
+Stores data in the form of documents using well known formats like JSON, BSON (Binary JSON) or XML
+
+**Column databases**\
+Stores data in a table, but rather than grouping entries by row, the table is partitioned into columns, each of which is stored in its own file. Often, queries are concerned with values from a specific column, so in those cases, a column based database can prevent a lot of unnecessary data from having to be accessed.
+
+**Key-value stores**\
+A more simple data model based on fast access by key to an associated value. The value can be a record, an object or a more complex structure.
+
+**Grap databases**\
+Data is represented by nodes and edges which reference each other.
+
 ## Examples
 a) We have a student database with the following tables in a ralation schema.
 

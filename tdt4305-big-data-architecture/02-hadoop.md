@@ -83,6 +83,9 @@ FsImage and EditLg may also be replicated, but doing this may degrade the perfor
 ## The NameNode
 There is one name node per cluster. It keeps track of which data blocks are stored in which name node. Both clients and DataNodes can send communicate with the NameNode, but the NameNode never initiates remote procedure calls. In short, the NameNodes eep track of the state of the file system, by both keeping track of an FsImage and a LogFile. The NameNode does not need to store the FsImage persistently, as it can be recreated on startup from the DataNodes.
 
+## Hadoop MapReduce
+MapReduce is Hadoop's distributet processing engine.
+
 ## Map functions
 Mapper maps input key/value pairs to a set of intermediate key/value pairs.
 The Mapper outputs are sorted and then partitioned per Reducer.

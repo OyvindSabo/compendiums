@@ -2,6 +2,15 @@
 
 The main point of hadoop is basically just to store and process data quickly.
 
+## The modules of Hadoop
+Hadoop is composed of modules that work together to create the Hadoop framework. The primary Hadoop framework modules are:
+- Hadoop Common
+- Hadoop Distributed File System (HDFS)
+- Hadoop YARN
+- Hadoop MapReduce
+
+Although the above four modules comprise Hadoop’s core, there are several other modules. These include Ambari, Avro, Cassandra, Hive, Pig, Oozie, Flume, and Sqoop, which further enhance and extend Hadoop’s power and reach into big data applications and large data set processing.
+
 ## Assumptions and Goals of Hadoop File System (HDFS)
 The following is the unaltered description from (https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)
 
@@ -27,7 +36,7 @@ HDFS has been designed to be easily portable from one platform to another. This 
 ## What Hadoop File System (HDFS) is not suitable for
 
 **Real time analytics**\
-Hadoop works on batch processing, hence response time is high. *"The emphasis is on high throughput of data access rather than low latency of data access"*.
+HDFS works on batch processing, hence response time is high. *"The emphasis is on high throughput of data access rather than low latency of data access"*.
 
 **Multiple smaller datasets**\
 Hadoop framework is not recommended for small-structured datasets. This is not because Hadoop is slower on small datasets than on large datasets, but because for small data sets there are other tools available which can work on small datasets more efficiently.

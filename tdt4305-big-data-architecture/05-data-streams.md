@@ -1,5 +1,23 @@
 # Data streams
 
+## Blom filter
+A bloom filter is a space-efficient probabillistic data structure whihc is used to test whether an element is a member of a set. It might give false positives (it might say that the element is in the set, even if it isn't), but it never give false negatives (if it says that an element is not in a set, it is definitely not in the set). In other words, a query returns either "possibly in set" or "definitely not in set".
+
+Bloom filters can for instance be used by web crawlers to efficiently find out whether a webpage has already been crawled, without comparing the webpage to all previously crawled webpages. It can also be used to filter out duplicate data in data analysis, or to prevent indexing duplicate mirror pages on the internet.
+
+A bloom filter can be created by first mapping the relevant content to a binary number in some way or another. Then, this binary number is passed through multiple hash functions, typically involving a modulo operation.
+
+Let's say we have a twitter post which produces this binary hash:\
+10101011
+Then we choose two hash functions. We let the first hash function be the number given by the odd numbered digits from the right mod 8, and the second hash function be the even numbered digits from the right mod 8 (assuming 1-indexing).
+
+h1(10101011) = 0001 mod 1000 = 1 mod 8 = 1\
+h2(10101011) = 1111 mod 1000 = 15 mod 8 = 7
+
+Initially our bloom filter is 00000000.
+We now swap in a 1 on the indexes corresponding to our two hashes (I'll do it from the right in this case).
+Our bloom filter then becomes 01000001.
+
 ## Example
 
 Assume that we are going to analyze how many times a thema about the American election is mentioned in messages on social media like Twitter.

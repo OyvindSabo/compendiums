@@ -100,14 +100,30 @@ Content-based recommendation
 ## Overlapping communities
 A network is said to have community structure if the nodes of the network can be easily grouped into (potentially overlapping) sets of nodes such that each set of nodes is densely connected internally. In the particular case of non-overlapping community finding, this implies that the network divides naturally into groups of nodes with dense connections internally and sparser connections between groups. But overlapping communities are also allowed. The more general definition is based on the principle that pairs of nodes are more likely to be connected if they are both members of the same community(ies), and less likely to be connected if they do not share communities.
 
-Two communities are overlapping if they share at least one node. Communities can be connected, even if they do not overlap, but in cases where communities have to be indentified from a social graph, it can be difficult to determine whether the communities overlap, or if they are just one large community. You might wonder how communities can be connected, but not overlap. For instance, one might say that a node is only a true member of a community if it is connected to more than one other node in that community. This means that two communities can be connected if no single node in any of the communities is connected to more than one node in te other community.
+Two communities are overlapping if they share at least one node. Communities can be connected, even if they do not overlap, but in cases where communities have to be indentified from a social graph, it can be difficult to determine whether the communities overlap, or if they are just one large community. You might wonder how communities can be connected, but not overlap. For instance, one might say that a node is only a true member of a community if it is connected to more than one other node in that community. This means that two communities can be connected if no single node in any of the communities is connected to more than one node in the other community.
 
 ## Community detection
 Community detection can be useful for:
 - Recommender systems (Facebook can recommend new friends from the same community, YouTube can recommend videos liked by others who are in the same subscriber communities?, Advertising in general)
+
+## How to find a community
+To identify communities, one can use the Girvan-Newman algorithm. It requires that we are able to calculate the betweenness of all edges in the network. The betweenness is a measure of how important a specific edge is. The higher the betweenness, the higher the possibility that this edge ties communities together. In a connected graph, the betweenness is given as the sum of shortest paths going through an edge, if we find the shortest path between all pairs of nodes in the network. If one part of the network is connected to another part of the network with very few edges, these edges will have high betweenness, and in the Girvan-Newman algorithm, the network will be split here.
 
 ## Girvan-Newman algorithm
 - The betweenness of all existing edges in the network is calculated first.
 - The edge with the highest betweenness is removed.
 - The betweenness of all edges affected by the removal is recalculated.
 - Steps 2 and 3 are repeated until no edges remain.
+
+As the algorithm progresses, the initail graph is split into smaller and smaller communities, but in the end, there are only individual nodes.
+
+## The purpose of identifying communities
+One can assume that people in the same community have somewhat alligning interests, which can be extrapolated or used for targeted advertising and recommendations of movies, Facebook-pages, friends, Linkedin contacts. Making recommendations based on identified communities will make the communities more strongly tied together. It can also be used for surveilance and statistics in general.
+
+## Node centrality
+Centrality aims to find the most important nodes in a network.
+- **Degree Centrality:** The first and conceptually the simplest Centrality definition. This is the number of edges connected to a node. In the case of a directed graph, we can have 2 degree centrality measures. Inflow and Outflow Centrality
+- **Closeness Centrality:** Of a node is the average length of the shortest path from the node to all other nodes
+- **Betweenness Centrality:** Number of times a node is present in the shortest path between 2 other nodes
+
+Node centrality can be used to identify individuals with a lot of influence, and can be used to identify hierarchy structures within criminal networks. Furthermore, node centrality can be used to assign a trust measure to nodes, which can help revent the development of fake profiles.

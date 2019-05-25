@@ -57,7 +57,7 @@ We subtract the mean from row 6 and get [-1.25, 0, 0.75, 0, 0.75, 0, 0, -0.25]
 | 6 | 1 |   | 3 |   | 3 |   | A | 2 | (1+3+3+2)/4   = 2.25 |
 movies
 
-We subtract the mean movie rating from each corresponding movie score and use the Pearsson correlation coefficient to calculate the similarity between row 6 and the other rows.
+We subtract the mean movie rating from each corresponding movie score and use the Pearson correlation coefficient to calculate the similarity between row 6 and the other rows.
 
                                users
 |   | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | sim(row 6, row i) |
@@ -70,7 +70,7 @@ We subtract the mean movie rating from each corresponding movie score and use th
 | 6 | -1.25 | 0     | 0.75  | 0     | 0.75  | 0     | 0 (A) | -0.25 | 1.00              |
 movies
 
-calculation for row 5 = (0.75\*0.75+0.75\*0.75) / sqrt((-1.25)²+0.75²+0.75²+(-0.25)²)*(0.75²+(-0.25)²+0.75²+(-1.25)²))
+calculation for row 5 = (0.75\*0.75+0.75\*0.75) / sqrt((-1.25)²+0.75²+0.75²+(-0.25)²)*sqrt(0.75²+(-0.25)²+0.75²+(-1.25)²))
 
 The way sim works is that row 6 = row i * sim (row i, row 6)
 
@@ -105,6 +105,7 @@ Two communities are overlapping if they share at least one node. Communities can
 ## Community detection
 Community detection can be useful for:
 - Recommender systems (Facebook can recommend new friends from the same community, YouTube can recommend videos liked by others who are in the same subscriber communities?, Advertising in general)
+- Partitioning graph databases.
 
 ## How to find a community
 To identify communities, one can use the Girvan-Newman algorithm. It requires that we are able to calculate the betweenness of all edges in the network. The betweenness is a measure of how important a specific edge is. The higher the betweenness, the higher the possibility that this edge ties communities together. In a connected graph, the betweenness is given as the sum of shortest paths going through an edge, if we find the shortest path between all pairs of nodes in the network. If one part of the network is connected to another part of the network with very few edges, these edges will have high betweenness, and in the Girvan-Newman algorithm, the network will be split here.
@@ -127,3 +128,15 @@ Centrality aims to find the most important nodes in a network.
 - **Betweenness Centrality:** Number of times a node is present in the shortest path between 2 other nodes
 
 Node centrality can be used to identify individuals with a lot of influence, and can be used to identify hierarchy structures within criminal networks. Furthermore, node centrality can be used to assign a trust measure to nodes, which can help revent the development of fake profiles.
+
+## Cold start problem
+For systems using collaborative filtering, being able to do good recommendations requires the items which might be recommended to have been rated or evaluated in some way. In short, nobody will try and rate an item they are not recommended, and nobody will be recommended an item which has not yet been tried and rated. Solutions to this include sometimes recommending unrated items, paying people to try and rate unrated items, using content-based recommendations...
+
+For systems using content-based recommendations, the cold start problem is caused by the system not having any initial info on the user's preferences. This can be solved by prompting the user to fill in preferences, to show content most people like, to show random content...
+
+## item-item collaborative filtering
+**First, lets recap what user-user collaborative filtering is**\
+User-user collaborative filtering is based on the assumption that similar users like similar things. To recommend something to a specific user, we find a user who has given many similar ratings to similar items as the user in question, and then recommend something this other user has rated highly, but which the user in question has not rated.
+
+**Now, let's look at item-item collaborative filtering**\
+Item-item collaborative filtering is based on assuming that similar items will get similar ratings. To calculate the score of an item for a specific user, we find the scores of multiple similar items and extrapolate the score to the unrated item. This can be usful for unrated items.

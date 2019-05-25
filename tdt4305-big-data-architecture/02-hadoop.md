@@ -100,7 +100,9 @@ Output: list(key, value)
 
 ## Two techniques which makes fault tolerance on DataNodes unnecessary
 - DataNodes send regular heart beats to NameNode, and if they don't the data they were in possession of is replicated from another DataNode containing the same data, to yet another DataNode, so failure of one node does not prevent access to any particular block.
-- Hadoop allows for multiple redundant copies of the NameNode, so there is no single point of failure. In previous Hadoop versions, each cluster only ha one name node, and if it failed, it had to be restarted. That being said, the NameNode is able to recreate the system image from the DataNodes.
+- Each data block also has a checksum which can be used to discover disk faults.
+
+Hadoop also allows for multiple redundant copies of the NameNode, so there is no single point of failure. In previous Hadoop versions, each cluster only ha one name node, and if it failed, it had to be restarted. That being said, the NameNode is able to recreate the system image from the DataNodes.
 
 ## MapReduce combiner
 The task of the combiner is to take the output list from the mapper and combine all the tuples with common keys, so that the reducer can reduce based on key. This means that the reducer can assume that it will not get duplicate keys from a single mapper. This reduces network congestion.

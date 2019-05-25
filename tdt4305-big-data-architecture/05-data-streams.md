@@ -151,3 +151,6 @@ Use hi(x) = y1 mod 11 an h2(x) = y2 mod 11 as hash functions
 | 56 = 11 1000       | 4 mod 11 = 4     | 6 mod 11 = 6     | 00001010000      |
 | 428 = 1 1010 1100  | 18 mod 11 = 7    | 14 mod 11 = 3    | 00011011000      |
 | 875 = 11 0110 1011 | 25 mod 11 = 3    | 23 mod 11 = 1    | 01011011000      |
+
+## Representing a stream by buckets
+If we accept up to 50% error, we can bitcount a stream with 2*log(N) buckets. We divide the windw into pairs of buckets whose size is 1, 2, 4, ...2^n. Each bucket has a timestamp for when the oldest 1 in the bucket was added. For each incoming digit, we should remove the oldest bucket if its timestamp is prior to N timesteps before te current time. If the input digit is 0, we don't do any additional changes, but if the input is 1, we create a new bucket of size 1. If this means that there are now three buckets of size 1, then the two oldest are merged together to a bucket of size 2. If this leads to the existence of three buckets of size 2, then the two oldes of these are merged together, and so on.

@@ -63,9 +63,9 @@ In HDFS, large data is split into blocks of 128MB. Blocks are the smallest unit 
 
 After large files have been split into bloks and distributed across multiple machines in a cluster, the blocks are replicated three times, and distributed among other machines in the cluster. This makes HDFS fault tolerant, since any given block is backed up in case one (or three) machines in the cluster goes down.
 
-The **client** is the interface through which the user, or an application used by the user communicates with HDFS. The client checks with the name node if the data nodes are ready to receive data. If they are, for each block, the client connects via TCP/IP to each the the corresponding datanodes and sends the IP address of the other datanodes in which the current block should be replicated. The first datanode in this pipeline connects to the others, and then starts pushing data.
+The **client** is the interface through which the user, or an application used by the user communicates with HDFS. The client checks with the name node if the data nodes are ready to receive data. If they are, for each block, the client connects via TCP/IP to the the corresponding datanodes and sends the IP address of the other datanodes in which the current block should be replicated. The first datanode in this pipeline connects to the others, and then starts pushing data.
 
-## Repliication in HDFS
+## Replication in HDFS
 When a client is writing data to an HDFS file, its data is first written to a local file. Suppose the HDFS file has a replication factor of three. When the local file accumulates a full block of user data, the client retrieves a list of DataNodes from the NameNode. This list contains the DataNodes that will host a replica of that block. The client then flushes the data block to the first DataNode. The first DataNode starts receiving the data in small portions (4 KB), writes each portion to its local repository and transfers that portion to the second DataNode in the list. The second DataNode, in turn starts receiving each portion of the data block, writes that portion to its repository and then flushes that portion to the third DataNode. Finally, the third DataNode writes the data to its local repository. Thus, a DataNode can be receiving data from the previous one in the pipeline and at the same time forwarding data to the next one in the pipeline. Thus, the data is pipelined from one DataNode to the next.
 
 Oh, and the elementary unit of data in HDFS is a a data block.
@@ -76,9 +76,9 @@ When reading data, HDFS will always attempt to read data from the replica which 
 
 On startup, the NameNode is in safe mode. While in this mode, no data blocks are replicated, but the NameNode checks whether each data node has at least the minimum number of replicas.
 
-Data nodes send regular heart beats to the NameNode, and if the name node hasn't reeived a recent heartbeat from a DataNode, then it will consider the DataNode dead and no longer forward IO requests to them. In these cases new replication may be required. NameNodes never initiate remote procedure calls. It simply responds to requests from DataNodes or clients.
+Data nodes send regular heart beats to the NameNode, and if the name node hasn't received a recent heartbeat from a DataNode, then it will consider the DataNode dead and no longer forward IO requests to them. In these cases new replication may be required. NameNodes never initiate remote procedure calls. It simply responds to requests from DataNodes or clients.
 
-FsImage and EditLg may also be replicated, but doing this may degrade the performance.
+FsImage and EditLog may also be replicated, but doing this may degrade the performance.
 
 ## The NameNode
 There is one name node per cluster. It keeps track of which data blocks are stored in which name node. Both clients and DataNodes can send communicate with the NameNode, but the NameNode never initiates remote procedure calls. In short, the NameNodes eep track of the state of the file system, by both keeping track of an FsImage and a LogFile. The NameNode does not need to store the FsImage persistently, as it can be recreated on startup from the DataNodes.
@@ -88,18 +88,18 @@ MapReduce is Hadoop's distributet processing engine.
 
 ## Map functions
 Mapper maps input key/value pairs to a set of intermediate key/value pairs.
-The Mapper outputs are sorted and then partitioned per Reducer.
-Input: (key, value)
+The Mapper outputs are sorted and then partitioned per Reducer.\
+Input: (key, value)\
 Output: list(key, value)
 
 ## Reduce functions
-Reducer reduces a set of intermediate values which share a key to a smaller set of values.
-Input: (key, list(values))
+Reducer reduces a set of intermediate values which share a key to a smaller set of values.\
+Input: (key, list(values))\
 Output: list(key, value)
 
 
 ## Two techniques which makes fault tolerance on DataNodes unnecessary
-- DataNodes send regular heart beats to NameNode, and if they don't the data they were in possession of is replicated from another DataNode containing the same data, to yet another DataNode, so failure of one node does not prevent access to any particular block.
+- DataNodes send regular heart beats to NameNode, and if they don't, the data they were in possession of is replicated from another DataNode containing the same data, to yet another DataNode, so failure of one node does not prevent access to any particular block.
 - Each data block also has a checksum which can be used to discover disk faults.
 
 Hadoop also allows for multiple redundant copies of the NameNode, so there is no single point of failure. In previous Hadoop versions, each cluster only ha one name node, and if it failed, it had to be restarted. That being said, the NameNode is able to recreate the system image from the DataNodes.
@@ -108,4 +108,4 @@ Hadoop also allows for multiple redundant copies of the NameNode, so there is no
 The task of the combiner is to take the output list from the mapper and combine all the tuples with common keys, so that the reducer can reduce based on key. This means that the reducer can assume that it will not get duplicate keys from a single mapper. This reduces network congestion.
 
 ## The purpose of data pipelines in HDFS
-In HDFS, when the client sends data to a DataNode, even if the data has to be sent to multiple different DataNodes for replication, the data only has to be sent to a single DataNode. When this DataNode starts receiving the data, the packets are received by the DataStreamer which is responsible for communicating with the NameNode to find out in what DataNodes the blocks should be replicated. While the client is still transferring data blocks to the DataNode, the DataNode can simultaneoulsy forwarding the data to the other DataNodes which will receive the replica data blocks. Data bblocks are by the way the smallest piece which defines the granularity of HDFS.
+In HDFS, when the client sends data to a DataNode, even if the data has to be sent to multiple different DataNodes for replication, the data only has to be sent to a single DataNode. When this DataNode starts receiving the data, the packets are received by the DataStreamer which is responsible for communicating with the NameNode to find out in what DataNodes the blocks should be replicated. While the client is still transferring data blocks to the DataNode, the DataNode can simultaneoulsy forwarding the data to the other DataNodes which will receive the replica data blocks. Data blocks are by the way the smallest piece which defines the granularity of HDFS.
